@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1071142749766",
+    "project_id": "digital-boutique-app",
+    "storage_bucket": "digital-boutique-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071142749766:android:8cd93941b31001f2e16c47",
+        "android_client_info": {
+          "package_name": "com.example.digital_boutique"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA48LBQ6gKCLjfAiH7ZG9-Moy96-OrYHXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
