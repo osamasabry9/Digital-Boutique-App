@@ -1,3 +1,4 @@
+import 'package:digital_boutique/app/env.variables.dart';
 import 'package:flutter/material.dart';
 
 class DigitalBoutiqueApp extends StatelessWidget {
@@ -7,6 +8,7 @@ class DigitalBoutiqueApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
