@@ -74,6 +74,13 @@ dev_dependencies:
   json_serializable: ^6.7.1
   hive_generator: ^2.0.1
 
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icons/splash_12.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/images/icons/splash_12.png"
 # The following section is specific to Flutter packages.
 flutter:
   uses-material-design: true
