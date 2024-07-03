@@ -81,3 +81,4 @@ flutter:
   assets:
     - .env.dev
     - .env.prod
+    - assets/images/

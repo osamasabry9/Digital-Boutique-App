@@ -1,4 +1,6 @@
 import 'package:digital_boutique/app/env.variables.dart';
+import 'package:digital_boutique/core/common/screens/no_network_screen.dart';
+import 'package:digital_boutique/core/utils/helpers/connectivity_controller.dart';
 import 'package:flutter/material.dart';
 
 class DigitalBoutiqueApp extends StatelessWidget {
@@ -6,18 +8,35 @@ class DigitalBoutiqueApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
+    return ValueListenableBuilder<bool>(
+      valueListenable: ConnectivityController.instance.isConnected,
+      builder: (context, isConnected, child) {
+        return MaterialApp(
+          title: isConnected ? 'Digital Boutique' : 'No Network',
+          debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          builder: (context, widget) {
+            if (isConnected) {
+              ConnectivityController.instance.init();
+              return Scaffold(
+                body: widget,
+              );
+            } else {
+              return widget!;
+            }
+          },
+          home: isConnected
+              ? Scaffold(
+                  appBar: AppBar(
+                    title: const Text('Digital Boutique'),
+                  ),
+                )
+              : const NoNetworkScreen(),
+        );
+      },
     );
   }
 }
