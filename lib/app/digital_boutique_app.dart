@@ -1,6 +1,7 @@
 import 'package:digital_boutique/app/env.variables.dart';
 import 'package:digital_boutique/core/common/screens/no_network_screen.dart';
 import 'package:digital_boutique/core/routes/app_router.dart';
+import 'package:digital_boutique/core/style/theme/app_theme.dart';
 import 'package:digital_boutique/core/utils/helpers/connectivity_controller.dart';
 import 'package:digital_boutique/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,7 @@ class DigitalBoutiqueApp extends StatelessWidget {
           child: MaterialApp(
             title: isConnected ? 'Digital Boutique' : 'No Network',
             debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+            theme: themeDark(),
             builder: (context, widget) {
               if (isConnected) {
                 ConnectivityController.instance.init();

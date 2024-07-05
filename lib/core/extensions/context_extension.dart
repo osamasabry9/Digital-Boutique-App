@@ -1,6 +1,11 @@
+import 'package:digital_boutique/core/style/theme/color_extension.dart';
 import 'package:flutter/material.dart';
 
-extension Navigation on BuildContext {
+extension ContextExtension on BuildContext {
+  // Color
+  AppColors get theme => Theme.of(this).extension<AppColors>()!;
+
+  // Navigator
   Future<dynamic> pushName(String routeName, {Object? arguments}) {
     return Navigator.of(this).pushNamed(routeName, arguments: arguments);
   }
