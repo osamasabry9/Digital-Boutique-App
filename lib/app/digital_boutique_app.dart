@@ -1,6 +1,8 @@
 import 'package:digital_boutique/app/env.variables.dart';
 import 'package:digital_boutique/core/common/screens/no_network_screen.dart';
+import 'package:digital_boutique/core/routes/app_router.dart';
 import 'package:digital_boutique/core/utils/helpers/connectivity_controller.dart';
+import 'package:digital_boutique/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,13 +34,9 @@ class DigitalBoutiqueApp extends StatelessWidget {
                 return widget!;
               }
             },
-            home: isConnected
-                ? Scaffold(
-                    appBar: AppBar(
-                      title: const Text('Digital Boutique'),
-                    ),
-                  )
-                : const NoNetworkScreen(),
+            onGenerateRoute: AppRouter.onGenerateRoute,
+            // initialRoute: isConnected ? Routes.homeScreen : Routes.noNetworkScreen,
+            home: isConnected ? const HomeScreen() : const NoNetworkScreen(),
           ),
         );
       },
