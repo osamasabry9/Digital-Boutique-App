@@ -1,3 +1,5 @@
+import 'package:digital_boutique/core/extensions/context_extension.dart';
+import 'package:digital_boutique/core/language/lang_keys.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +10,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Digital Boutique'),
+        title: Text(
+          context.translate(LangKeys.appName),
+          style: const TextStyle(color: Colors.black, fontSize: 20),
+        ),
       ),
     );
   }
