@@ -80,9 +80,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/icons/splash_12.png"
+  image_path: "assets/images/logo/splash_12.png"
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/images/icons/splash_12.png"
+  adaptive_icon_foreground: "assets/images/logo/splash_12.png"
 # The following section is specific to Flutter packages.
 flutter:
   uses-material-design: true
@@ -91,6 +91,11 @@ flutter:
     - .env.dev
     - .env.prod
     - assets/images/
+    - assets/images/admin/
+    - assets/images/core/
+    - assets/images/customer/
+    - assets/images/logo/
+    - assets/images/svg
     - assets/lang/
 
   fonts:
@@ -112,3 +117,9 @@ flutter:
           weight: 500
         - asset: assets/fonts/english/poppins/Poppins-Regular.ttf
           weight: 400
+
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/style/images
+  filename: app_images.dart
+  class_name: AppImages
