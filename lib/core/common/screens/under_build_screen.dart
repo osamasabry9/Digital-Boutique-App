@@ -1,4 +1,4 @@
-import 'package:digital_boutique/core/style/app_images.dart';
+import 'package:digital_boutique/core/style/images/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
