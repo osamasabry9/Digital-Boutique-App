@@ -1,5 +1,6 @@
 import 'package:digital_boutique/app/env.variables.dart';
 import 'package:digital_boutique/core/common/screens/no_network_screen.dart';
+import 'package:digital_boutique/core/language/app_localizations_setup.dart';
 import 'package:digital_boutique/core/routes/app_router.dart';
 import 'package:digital_boutique/core/style/theme/app_theme.dart';
 import 'package:digital_boutique/core/utils/helpers/connectivity_controller.dart';
@@ -22,11 +23,20 @@ class DigitalBoutiqueApp extends StatelessWidget {
             title: isConnected ? 'Digital Boutique' : 'No Network',
             debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
             theme: themeDark(),
+            locale: const Locale('ar'),
+            supportedLocales: AppLocalizationsSetup.supportedLocales,
+            localizationsDelegates:
+                AppLocalizationsSetup.localizationsDelegates,
+            localeResolutionCallback:
+                AppLocalizationsSetup.localeResolutionCallback,
             builder: (context, widget) {
               if (isConnected) {
                 ConnectivityController.instance.init();
-                return Scaffold(
-                  body: widget,
+                return GestureDetector(
+                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                  child: Scaffold(
+                    body: widget,
+                  ),
                 );
               } else {
                 return widget!;

@@ -7,10 +7,6 @@ class NoNetworkScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('No Network'),
-        centerTitle: true,
-      ),
       body: Center(
         child: Container(
           constraints: BoxConstraints.expand(
