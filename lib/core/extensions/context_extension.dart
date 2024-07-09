@@ -1,10 +1,17 @@
 import 'package:digital_boutique/core/language/app_localizations.dart';
+import 'package:digital_boutique/core/style/images/app_images.dart';
 import 'package:digital_boutique/core/style/theme/color_extension.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
-  // Color
-  AppColors get theme => Theme.of(this).extension<AppColors>()!;
+  //color
+  AppColors get color => Theme.of(this).extension<AppColors>()!;
+
+  // images
+  AppImages get assets => Theme.of(this).extension<AppImages>()!;
+
+  // style
+  TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
   
 //Language
   String translate(String langKey) {
