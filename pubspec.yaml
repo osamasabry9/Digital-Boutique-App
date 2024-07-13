@@ -95,7 +95,7 @@ flutter:
     - assets/images/core/
     - assets/images/customer/
     - assets/images/logo/
-    - assets/images/svg
+    - assets/images/svg/
     - assets/lang/
 
   fonts:
