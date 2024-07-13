@@ -19,32 +19,35 @@ class DigitalBoutiqueApp extends StatelessWidget {
         return ScreenUtilInit(
           designSize: const Size(375, 812),
           minTextAdapt: true,
-          child: MaterialApp(
-            title: isConnected ? 'Digital Boutique' : 'No Network',
-            debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-            theme: themeDark(),
-            locale: const Locale('ar'),
-            supportedLocales: AppLocalizationsSetup.supportedLocales,
-            localizationsDelegates:
-                AppLocalizationsSetup.localizationsDelegates,
-            localeResolutionCallback:
-                AppLocalizationsSetup.localeResolutionCallback,
-            builder: (context, widget) {
-              if (isConnected) {
-                ConnectivityController.instance.init();
-                return GestureDetector(
-                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-                  child: Scaffold(
-                    body: widget,
-                  ),
-                );
-              } else {
-                return widget!;
-              }
+          child: Builder(
+            builder: (_) {
+              return MaterialApp(
+                title: isConnected ? 'Digital Boutique' : 'No Network',
+                debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
+                theme: themeDark(),
+                locale: const Locale('en'),
+                supportedLocales: AppLocalizationsSetup.supportedLocales,
+                localizationsDelegates:
+                    AppLocalizationsSetup.localizationsDelegates,
+                localeResolutionCallback:
+                    AppLocalizationsSetup.localeResolutionCallback,
+                builder: (context, widget) {
+                  if (isConnected) {
+                    ConnectivityController.instance.init();
+                    return GestureDetector(
+                      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                      child: Scaffold(
+                        body: widget,
+                      ),
+                    );
+                  } else {
+                    return widget!;
+                  }
+                },
+                onGenerateRoute: AppRouter.onGenerateRoute,
+                home: isConnected ? const HomeScreen() : const NoNetworkScreen(),
+              );
             },
-            onGenerateRoute: AppRouter.onGenerateRoute,
-            // initialRoute: isConnected ? Routes.homeScreen : Routes.noNetworkScreen,
-            home: isConnected ? const HomeScreen() : const NoNetworkScreen(),
           ),
         );
       },

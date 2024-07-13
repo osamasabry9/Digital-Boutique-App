@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           context.translate(LangKeys.appName),
-          style: const TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),
     );
