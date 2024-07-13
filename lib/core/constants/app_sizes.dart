@@ -4,10 +4,15 @@ class AppSizes {
   // Padding and margin sizes
   static  double xs = 4.0.h;
   static  double sm = 8.0.h;
-   static  double s = 12.0.h;
+  static  double s = 12.0.h;
   static  double md = 16.0.h;
   static  double lg = 24.0.h;
   static  double xl = 32.0.h;
+
+  static  double paddingH = 20.0.w;
+  static  double paddingV = 20.0.h;
+  static  double marginH = 20.0.w;
+  static  double marginV = 20.0.h;
 
   // Icon sizes
   static  double iconXs = 12.0.h;
@@ -31,6 +36,7 @@ class AppSizes {
   static  double buttonPaddingH = 20.0.w;
   static  double buttonPaddingV = 18.0.h;
   static  double buttonHeight = 18.0.h;
+  static  double buttonHeightLg = 50.0.h;
   static  double buttonRadius = 12.0.r;
   static  double buttonWidth = 120.0.w;
   static  double buttonElevation = 4.0.h;
