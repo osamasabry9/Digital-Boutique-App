@@ -1,10 +1,10 @@
-import 'package:digital_boutique/core/common/animations/animate_do.dart';
-import 'package:digital_boutique/core/common/widgets/text_app.dart';
 import 'package:digital_boutique/core/constants/app_sizes.dart';
 import 'package:digital_boutique/core/extensions/context_extension.dart';
 import 'package:digital_boutique/core/language/lang_keys.dart';
+import 'package:digital_boutique/core/routes/routes.dart';
 import 'package:digital_boutique/features/auth/presentation/widgets/auth_title_info.dart';
 import 'package:digital_boutique/features/auth/presentation/widgets/dark_and_lang_buttons.dart';
+import 'package:digital_boutique/features/auth/presentation/widgets/go_to_screen.dart';
 import 'package:digital_boutique/features/auth/presentation/widgets/login/login_button.dart';
 import 'package:digital_boutique/features/auth/presentation/widgets/login/login_form.dart';
 import 'package:flutter/material.dart';
@@ -45,14 +45,9 @@ class LoginBody extends StatelessWidget {
             SizedBox(height: 30.h),
 
             // Go to Sign Up screen
-            CustomFadeInDown(
-              duration: 400,
-              child: TextApp(
-                text: context.translate(LangKeys.createAccount),
-                theme: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: context.color.bluePinkLight,
-                    ),
-              ),
+            const GoToScreen(
+              title: LangKeys.createAccount,
+              routeName: Routes.signUpScreen,
             ),
           ],
         ),
