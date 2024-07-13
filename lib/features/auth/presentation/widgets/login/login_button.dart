@@ -1,3 +1,4 @@
+import 'package:digital_boutique/core/common/animations/animate_do.dart';
 import 'package:digital_boutique/core/common/widgets/custom_linear_button.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
 import 'package:digital_boutique/core/constants/app_sizes.dart';
@@ -12,13 +13,16 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomLinearButton(
-      onPressed: () {},
-      height: AppSizes.buttonHeightLg,
-      width: double.infinity,
-      child: TextApp(
-        text: context.translate(LangKeys.login),
-        theme: Theme.of(context).textTheme.headlineSmall!,
+    return CustomFadeInRight(
+      duration: 600,
+      child: CustomLinearButton(
+        onPressed: () {},
+        height: AppSizes.buttonHeightLg,
+        width: double.infinity,
+        child: TextApp(
+          text: context.translate(LangKeys.login),
+          theme: Theme.of(context).textTheme.headlineSmall!,
+        ),
       ),
     );
   }
