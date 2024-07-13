@@ -1,23 +1,23 @@
 import 'package:digital_boutique/core/common/screens/no_network_screen.dart';
 import 'package:digital_boutique/core/common/screens/under_build_screen.dart';
-import 'package:digital_boutique/core/routes/base_routes.dart';
+import 'package:digital_boutique/core/routes/base_routes_animation.dart';
 import 'package:digital_boutique/core/routes/routes.dart';
-import 'package:digital_boutique/home_screen.dart';
+import 'package:digital_boutique/features/auth/presentation/screens/login_screen.dart';
+import 'package:digital_boutique/features/auth/presentation/screens/sign_uo_screen.dart';
 import 'package:flutter/material.dart';
 
-
-
-
 class AppRouter {
-  static Route<void>  onGenerateRoute(RouteSettings settings) {
-   //final args = settings.arguments;
+  static Route<void> onGenerateRoute(RouteSettings settings) {
+    //final args = settings.arguments;
     switch (settings.name) {
       case Routes.noNetworkScreen:
-        return BaseRoute(page: const NoNetworkScreen());
-      case Routes.homeScreen:
-        return BaseRoute(page: const HomeScreen());
+        return BaseRouteAnimation(page: const NoNetworkScreen());
+      case Routes.loginScreen:
+        return BaseRouteAnimation(page: const LoginScreen());
+      case Routes.signUpScreen:
+        return BaseRouteAnimation(page: const SignUpScreen());
       default:
-        return BaseRoute(page: const PageUnderBuildScreen());
+        return BaseRouteAnimation(page: const PageUnderBuildScreen());
     }
   }
 }

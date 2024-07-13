@@ -4,7 +4,7 @@ import 'package:digital_boutique/core/language/app_localizations_setup.dart';
 import 'package:digital_boutique/core/routes/app_router.dart';
 import 'package:digital_boutique/core/style/theme/app_theme.dart';
 import 'package:digital_boutique/core/utils/helpers/connectivity_controller.dart';
-import 'package:digital_boutique/home_screen.dart';
+import 'package:digital_boutique/features/auth/presentation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -45,7 +45,7 @@ class DigitalBoutiqueApp extends StatelessWidget {
                   }
                 },
                 onGenerateRoute: AppRouter.onGenerateRoute,
-                home: isConnected ? const HomeScreen() : const NoNetworkScreen(),
+                home: isConnected ? const LoginScreen() : const NoNetworkScreen(),
               );
             },
           ),
