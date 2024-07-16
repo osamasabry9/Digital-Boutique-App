@@ -1,5 +1,5 @@
+import 'package:digital_boutique/core/language/lang_keys.dart';
 import 'package:digital_boutique/core/networking/api_result.dart';
-import 'package:digital_boutique/core/utils/error/error_helper.dart';
 import 'package:digital_boutique/features/auth/data/data_source/auth_data_source.dart';
 import 'package:digital_boutique/features/auth/data/models/login_request_body.dart';
 import 'package:digital_boutique/features/auth/data/models/login_response.dart';
@@ -20,7 +20,7 @@ class AuthRepos {
 
       return ApiResult.success(response);
     } catch (error) {
-      return const ApiResult.failure(ErrorHelper.errorMessage);
+      return const ApiResult.failure(LangKeys.loggedError);
     }
   }
 
