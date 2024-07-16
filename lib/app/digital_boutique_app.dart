@@ -63,7 +63,11 @@ class DigitalBoutiqueApp extends StatelessWidget {
                       );
                     },
                     onGenerateRoute: AppRouter.onGenerateRoute,
-                    initialRoute: Routes.loginScreen,
+                    initialRoute: isLoggedInUser
+                        ? isAdmin
+                            ? Routes.homeScreenAdmin
+                            : Routes.homeScreenUser
+                        : Routes.loginScreen,
                   );
                 },
               ),
