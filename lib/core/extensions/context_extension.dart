@@ -12,7 +12,7 @@ extension ContextExtension on BuildContext {
 
   // style
   TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
-  
+
 //Language
   String translate(String langKey) {
     return AppLocalizations.of(this)!.translate(langKey).toString();
@@ -37,4 +37,8 @@ extension ContextExtension on BuildContext {
   }
 
   void pop() => Navigator.of(this).pop();
+}
+
+extension StringExtension on String? {
+  bool isNullOrEmpty() => this == null || this == '';
 }

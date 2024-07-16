@@ -39,10 +39,10 @@ class AppValidators {
       return context.translate(LangKeys.validPasswordNumber);
     }
 
-    // Check for special characters
-    if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return context.translate(LangKeys.validPasswordSpecial);
-    }
+    // // Check for special characters
+    // if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+    //   return context.translate(LangKeys.validPasswordSpecial);
+    // }
 
     return null;
   }

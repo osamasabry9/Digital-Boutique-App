@@ -5,3 +5,7 @@ class PrefKeys {
   static const String userId = 'userId';
   static const String userRole = 'userRole';
 }
+// variable to check if user is logged in or not in app 
+bool isLoggedInUser = false;
+
+bool isAdmin = false;

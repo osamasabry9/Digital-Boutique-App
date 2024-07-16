@@ -3,7 +3,9 @@ import 'package:digital_boutique/core/common/widgets/custom_text_field.dart';
 import 'package:digital_boutique/core/extensions/context_extension.dart';
 import 'package:digital_boutique/core/language/lang_keys.dart';
 import 'package:digital_boutique/core/utils/validators/validation.dart';
+import 'package:digital_boutique/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginForm extends StatefulWidget {
@@ -17,16 +19,35 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   bool isShowPassword = true;
+
+late AuthBloc _authBloc;
+
+@override
+  void initState() {
+    super.initState();
+    _authBloc = context.read<AuthBloc>();
+  }
+
+  @override
+  void dispose() {
+    _authBloc.emailController.dispose();
+    _authBloc.passwordController.dispose();
+    super.dispose();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _authBloc.formKey,
       child: Column(
         children: [
           // Email
           CustomFadeInRight(
             duration: 200,
             child: CustomTextField(
-              controller: TextEditingController(),
+              controller: _authBloc.emailController,
               validator: (value) =>
                   AppValidators.validateEmail(value, context: context),
               hintText: context.translate(LangKeys.email),
@@ -38,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
           CustomFadeInRight(
             duration: 300,
             child: CustomTextField(
-              controller: TextEditingController(),
+              controller: _authBloc.passwordController,
               validator: (value) =>
                   AppValidators.validatePassword(value, context: context),
               hintText: context.translate(LangKeys.password),
