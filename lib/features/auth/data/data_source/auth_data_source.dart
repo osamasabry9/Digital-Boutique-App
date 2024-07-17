@@ -1,8 +1,9 @@
-
 import 'package:digital_boutique/core/networking/api_service.dart';
 import 'package:digital_boutique/core/networking/graphql_queries/auth/auth_queries.dart';
 import 'package:digital_boutique/features/auth/data/models/login_request_body.dart';
 import 'package:digital_boutique/features/auth/data/models/login_response.dart';
+import 'package:digital_boutique/features/auth/data/models/sign_up_request_body.dart';
+import 'package:digital_boutique/features/auth/data/models/sign_up_response.dart';
 import 'package:digital_boutique/features/auth/data/models/user_role_response.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
@@ -29,4 +30,11 @@ class AuthDataSource {
     return response;
   }
 
+// Sign Up
+
+  Future<SignUpResponse> signUp({required SignUpRequestBody body}) async {
+    final response =
+        await _graphql.signUp(AuthQueries().signUpMapQuery(body: body));
+    return response;
+  }
 }

@@ -3,6 +3,7 @@ import 'package:digital_boutique/core/local_storage/secure_storage/secure_storag
 import 'package:digital_boutique/core/local_storage/shared_pref/pref_keys.dart';
 import 'package:digital_boutique/core/local_storage/shared_pref/shared_pref.dart';
 import 'package:digital_boutique/features/auth/data/models/login_request_body.dart';
+import 'package:digital_boutique/features/auth/data/models/sign_up_request_body.dart';
 import 'package:digital_boutique/features/auth/data/reposatory/auth_repos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,9 +16,10 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._repo) : super(const _Initial()) {
     on<LoginEvent>(_login);
+    on<SignUpEvent>(_signUp);
   }
 
-   final AuthRepos _repo;
+  final AuthRepos _repo;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -30,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     final result = await _repo.login(
-    body:   LoginRequestBody(
+      body: LoginRequestBody(
         email: emailController.text.trim(),
         password: passwordController.text,
       ),
@@ -47,6 +49,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await SharedPref().setInt(PrefKeys.userId, user.userId ?? 0);
         await SharedPref().setString(PrefKeys.userRole, user.userRole ?? '');
         emit(AuthState.success(userRole: user.userRole ?? ''));
+      },
+      failure: (error) {
+        emit(AuthState.error(error: error));
+      },
+    );
+  }
+
+  FutureOr<void> _signUp(SignUpEvent event, Emitter<AuthState> emit) async {
+    emit(const AuthState.loading());
+
+    final result = await _repo.signUp(
+      body: SignUpRequestBody(
+        name: nameController.text.trim(),
+        email: emailController.text.trim(),
+        password: passwordController.text,
+        avatar: event.imgUrl,
+      ),
+    );
+
+    result.when(
+      success: (signUpData) {
+        add(const AuthEvent.login());
       },
       failure: (error) {
         emit(AuthState.error(error: error));

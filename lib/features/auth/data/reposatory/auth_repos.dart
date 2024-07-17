@@ -1,8 +1,11 @@
 import 'package:digital_boutique/core/language/lang_keys.dart';
 import 'package:digital_boutique/core/networking/api_result.dart';
+import 'package:digital_boutique/core/utils/error/error_helper.dart';
 import 'package:digital_boutique/features/auth/data/data_source/auth_data_source.dart';
 import 'package:digital_boutique/features/auth/data/models/login_request_body.dart';
 import 'package:digital_boutique/features/auth/data/models/login_response.dart';
+import 'package:digital_boutique/features/auth/data/models/sign_up_request_body.dart';
+import 'package:digital_boutique/features/auth/data/models/sign_up_response.dart';
 import 'package:digital_boutique/features/auth/data/models/user_role_response.dart';
 
 class AuthRepos {
@@ -32,5 +35,17 @@ class AuthRepos {
   Future<UserRoleResponse> userRole(String token) async {
     final response = await _authDataSource.userRole(token);
     return response;
+  }
+
+
+  Future<ApiResult<SignUpResponse>> signUp({
+    required SignUpRequestBody body,
+  }) async {
+    try {
+      final response = await _authDataSource.signUp(body: body);
+      return ApiResult.success(response);
+    } catch (error) {
+      return const ApiResult.failure(ErrorHelper.errorMessage);
+    }
   }
 }
