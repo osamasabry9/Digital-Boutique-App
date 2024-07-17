@@ -1,6 +1,9 @@
 import 'package:digital_boutique/core/cubits/app_cubit/app_cubit.dart';
 import 'package:digital_boutique/core/networking/api_service.dart';
 import 'package:digital_boutique/core/networking/dio_factory.dart';
+import 'package:digital_boutique/core/service/upload_image/cubit/upload_image_cubit.dart';
+import 'package:digital_boutique/core/service/upload_image/data_source/upload_image_data_source.dart';
+import 'package:digital_boutique/core/service/upload_image/repo/upload_image_repo.dart';
 import 'package:digital_boutique/features/auth/data/data_source/auth_data_source.dart';
 import 'package:digital_boutique/features/auth/data/reposatory/auth_repos.dart';
 import 'package:digital_boutique/features/auth/presentation/bloc/auth_bloc.dart';
@@ -23,7 +26,12 @@ Future<void> _initCore() async {
   getIt
     ..registerLazySingleton(() => ApiService(dio))
     ..registerFactory(AppCubit.new)
-    ..registerSingleton<GlobalKey<NavigatorState>>(navigatorKey);
+    ..registerSingleton<GlobalKey<NavigatorState>>(navigatorKey)
+    ..registerLazySingleton(() => UploadImageDataSource(getIt<ApiService>()))
+    ..registerLazySingleton(
+      () => UploadImageRepo(getIt<UploadImageDataSource>()),
+    )
+    ..registerFactory(() => UploadImageCubit(getIt<UploadImageRepo>()));
 }
 
 Future<void> _initAuth() async {

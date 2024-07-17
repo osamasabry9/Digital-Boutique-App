@@ -3,6 +3,7 @@ import 'package:digital_boutique/core/common/screens/no_network_screen.dart';
 import 'package:digital_boutique/core/common/screens/under_build_screen.dart';
 import 'package:digital_boutique/core/routes/base_routes_animation.dart';
 import 'package:digital_boutique/core/routes/routes.dart';
+import 'package:digital_boutique/core/service/upload_image/cubit/upload_image_cubit.dart';
 import 'package:digital_boutique/features/admin/presentaion/home_screen_admin.dart';
 import 'package:digital_boutique/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:digital_boutique/features/auth/presentation/screens/login_screen.dart';
@@ -25,12 +26,20 @@ class AppRouter {
           ),
         );
       case Routes.signUpScreen:
-        return BaseRouteAnimation(page: const SignUpScreen());
+        return BaseRouteAnimation(
+          page: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<UploadImageCubit>()),
+              BlocProvider(create: (context) => getIt<AuthBloc>()),
+            ],
+            child: const SignUpScreen(),
+          ),
+        );
 
       case Routes.homeScreenAdmin:
-          return BaseRouteAnimation(page: const HomeScreenAdmin());
+        return BaseRouteAnimation(page: const HomeScreenAdmin());
       case Routes.homeScreenUser:
-          return BaseRouteAnimation(page: const HomeScreenUser());
+        return BaseRouteAnimation(page: const HomeScreenUser());
       default:
         return BaseRouteAnimation(page: const PageUnderBuildScreen());
     }
