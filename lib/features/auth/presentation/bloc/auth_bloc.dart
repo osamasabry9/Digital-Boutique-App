@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:digital_boutique/core/service/secure_storage/secure_storage_helper.dart';
-import 'package:digital_boutique/core/service/shared_pref/pref_keys.dart';
-import 'package:digital_boutique/core/service/shared_pref/shared_pref.dart';
+import 'package:digital_boutique/core/local_storage/secure_storage/secure_storage_helper.dart';
+import 'package:digital_boutique/core/local_storage/shared_pref/pref_keys.dart';
+import 'package:digital_boutique/core/local_storage/shared_pref/shared_pref.dart';
 import 'package:digital_boutique/features/auth/data/models/login_request_body.dart';
 import 'package:digital_boutique/features/auth/data/reposatory/auth_repos.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
-import 'package:digital_boutique/core/service/secure_storage/secure_storage_helper.dart';
-import 'package:digital_boutique/core/service/shared_pref/pref_keys.dart';
+import 'package:digital_boutique/core/local_storage/secure_storage/secure_storage_helper.dart';
+import 'package:digital_boutique/core/local_storage/shared_pref/pref_keys.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
