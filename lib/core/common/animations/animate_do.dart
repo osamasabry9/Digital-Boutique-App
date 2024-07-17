@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:digital_boutique/core/service/shared_pref/pref_keys.dart';
-import 'package:digital_boutique/core/service/shared_pref/shared_pref.dart';
+import 'package:digital_boutique/core/local_storage/shared_pref/pref_keys.dart';
+import 'package:digital_boutique/core/local_storage/shared_pref/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 class CustomFadeInDown extends StatelessWidget {
