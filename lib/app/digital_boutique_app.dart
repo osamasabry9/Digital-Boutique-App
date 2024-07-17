@@ -62,6 +62,7 @@ class DigitalBoutiqueApp extends StatelessWidget {
                         ),
                       );
                     },
+                    navigatorKey: getIt<GlobalKey<NavigatorState>>(),
                     onGenerateRoute: AppRouter.onGenerateRoute,
                     initialRoute: isLoggedInUser
                         ? isAdmin
