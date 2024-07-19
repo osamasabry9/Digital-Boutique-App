@@ -4,7 +4,7 @@ import 'package:digital_boutique/core/common/screens/under_build_screen.dart';
 import 'package:digital_boutique/core/routes/base_routes_animation.dart';
 import 'package:digital_boutique/core/routes/routes.dart';
 import 'package:digital_boutique/core/service/upload_image/cubit/upload_image_cubit.dart';
-import 'package:digital_boutique/features/admin/presentaion/home_screen_admin.dart';
+import 'package:digital_boutique/features/admin/home_admin/presentation/screens/home_admin_screen.dart';
 import 'package:digital_boutique/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:digital_boutique/features/auth/presentation/screens/login_screen.dart';
 import 'package:digital_boutique/features/auth/presentation/screens/sign_uo_screen.dart';
@@ -35,9 +35,8 @@ class AppRouter {
             child: const SignUpScreen(),
           ),
         );
-
-      case Routes.homeScreenAdmin:
-        return BaseRouteAnimation(page: const HomeScreenAdmin());
+      case Routes.homeAdminScreen:
+        return BaseRouteAnimation(page: const HomeAdminScreen());
       case Routes.homeScreenUser:
         return BaseRouteAnimation(page: const HomeScreenUser());
       default:
