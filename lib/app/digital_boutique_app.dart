@@ -66,7 +66,7 @@ class DigitalBoutiqueApp extends StatelessWidget {
                     onGenerateRoute: AppRouter.onGenerateRoute,
                     initialRoute: isLoggedInUser
                         ? isAdmin
-                            ? Routes.homeScreenAdmin
+                            ? Routes.homeAdminScreen
                             : Routes.homeScreenUser
                         : Routes.loginScreen,
                   );
