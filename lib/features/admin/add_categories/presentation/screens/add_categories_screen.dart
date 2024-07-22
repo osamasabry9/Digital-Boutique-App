@@ -1,5 +1,6 @@
 import 'package:digital_boutique/core/common/widgets/admin_app_bar.dart';
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/add_categories_body.dart';
 import 'package:flutter/material.dart';
 
 class AddCategoriesScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class AddCategoriesScreen extends StatelessWidget {
           isMain: true,
           backgroundColor: ColorsDark.mainColor,
         ),
-      body: Center(child: Text('AddCategoriesScreen')),
+      body: AddCategoriesBody(),
     );
   }
 }
