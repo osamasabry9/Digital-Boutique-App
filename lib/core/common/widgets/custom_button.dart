@@ -32,13 +32,12 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? Colors.black,
-          shape: RoundedRectangleBorder(
+    return TextButton(
+      style: ButtonStyle(
+        backgroundColor:
+            WidgetStateProperty.all(backgroundColor ?? Colors.black),
+        shape: WidgetStateProperty.all(
+          RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(threeRadius ?? 20),
               topRight: Radius.circular(threeRadius ?? 20),
@@ -47,15 +46,16 @@ class CustomButton extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: onPressed,
-        child: TextApp(
-          theme: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: textColor ?? Colors.white),
-          text: text,
-          textAlign: textAlign,
-        ),
+        padding: WidgetStateProperty.all(EdgeInsets.zero),
+        fixedSize: WidgetStateProperty.all(Size(width, height)),
+      ),
+      onPressed: onPressed,
+      child: TextApp(
+        theme: Theme.of(context).textTheme.titleMedium!.copyWith(
+              color: textColor ?? Colors.white,
+            ),
+        text: text,
+        textAlign: textAlign,
       ),
     );
   }
