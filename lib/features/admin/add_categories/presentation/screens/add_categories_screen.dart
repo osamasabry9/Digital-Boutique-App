@@ -1,7 +1,6 @@
 import 'package:digital_boutique/app/di.dart';
 import 'package:digital_boutique/core/common/widgets/admin_app_bar.dart';
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
-import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/create_category/create_category_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/add_categories_body.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +17,7 @@ class AddCategoriesScreen extends StatelessWidget {
           create: (context) => getIt<GetAllAdminCategoriesBloc>()
             ..add(const GetAllAdminCategoriesEvent.fetchAdminCategories(isNotLoading: true)),
         ),
-        BlocProvider(
-          create: (context) => getIt<CreateCategoryBloc>(),
-        ),
+        
       ],
       child: const Scaffold(
          backgroundColor: ColorsDark.mainColor,
