@@ -1,5 +1,6 @@
 import 'package:digital_boutique/core/constants/app_constants.dart';
 import 'package:digital_boutique/core/service/upload_image/model/upload_image_response.dart';
+import 'package:digital_boutique/features/admin/add_categories/data/models/get_all_categories_response.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/models/categories_number_response.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/models/products_number_response.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/models/users_number_response.dart';
@@ -48,6 +49,11 @@ abstract class ApiService {
 
   @POST(graphql)
   Future<UsersNumberResponse> numberOfUsers(
+    @Body() Map<String, dynamic> query,
+  );
+
+  @POST(graphql)
+  Future<CategoriesGetAllResponse> getAllCategories(
     @Body() Map<String, dynamic> query,
   );
 }
