@@ -6,6 +6,7 @@ import 'package:digital_boutique/core/service/upload_image/data_source/upload_im
 import 'package:digital_boutique/core/service/upload_image/repo/upload_image_repo.dart';
 import 'package:digital_boutique/features/admin/add_categories/data/data_source/categories_admin_data_source.dart';
 import 'package:digital_boutique/features/admin/add_categories/data/repos/categories_admin_repos.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/create_category/create_category_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/data_source/dashboard_data_source.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/repos/dashboard_repo.dart';
@@ -64,6 +65,9 @@ Future<void> _initCategoriesAdmin() async {
   getIt
     ..registerFactory(
       () => GetAllAdminCategoriesBloc(getIt<CategoriesAdminRepos>()),
+    )
+    ..registerFactory(
+      () => CreateCategoryBloc(getIt<CategoriesAdminRepos>()),
     )
     ..registerLazySingleton(
       () => CategoriesAdminRepos(getIt<CategoriesAdminDataSource>()),
