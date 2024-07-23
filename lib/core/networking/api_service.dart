@@ -38,7 +38,7 @@ abstract class ApiService {
     @Body() Map<String, dynamic> mutation,
   );
 
-    @POST(graphql)
+  @POST(graphql)
   Future<ProductsNumberResponse> numberOfProducts(
     @Body() Map<String, dynamic> query,
   );
@@ -58,8 +58,13 @@ abstract class ApiService {
     @Body() Map<String, dynamic> query,
   );
 
-    @POST(graphql)
+  @POST(graphql)
   Future<CreateCategoryResponse> createCategory(
+    @Body() Map<String, dynamic> mutation,
+  );
+
+  @POST(graphql)
+  Future<void> deleteCategory(
     @Body() Map<String, dynamic> mutation,
   );
 }
