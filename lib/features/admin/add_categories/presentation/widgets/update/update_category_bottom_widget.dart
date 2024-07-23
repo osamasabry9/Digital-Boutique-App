@@ -6,17 +6,25 @@ import 'package:digital_boutique/features/admin/add_categories/presentation/widg
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CreateCategoryBottomSheetWidget extends StatefulWidget {
-  const CreateCategoryBottomSheetWidget({super.key});
+class UpdateCategoryBottomWidget extends StatefulWidget {
+  const UpdateCategoryBottomWidget({
+     required this.imageUrl,
+    required this.categoryId,
+    required this.categoryName,
+    super.key,
+  });
+
+  final String imageUrl;
+  final String categoryId;
+  final String categoryName;
+
 
   @override
-  State<CreateCategoryBottomSheetWidget> createState() =>
-      _CreateCategoryBottomSheetWidgetState();
+  State<UpdateCategoryBottomWidget> createState() => _UpdateCategoryBottomWidgetState();
 }
 
-class _CreateCategoryBottomSheetWidgetState
-    extends State<CreateCategoryBottomSheetWidget> {
-  TextEditingController nameCategoryController = TextEditingController();
+class _UpdateCategoryBottomWidgetState extends State<UpdateCategoryBottomWidget> {
+ TextEditingController nameCategoryController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
 
@@ -38,7 +46,7 @@ class _CreateCategoryBottomSheetWidgetState
             //Create Category Title
             Center(
               child: TextApp(
-                text: 'Create Category',
+                text: 'Update Category',
                 theme: Theme.of(context).textTheme.headlineLarge!.copyWith(
                       fontSize: 20.sp,
                     ),
@@ -47,29 +55,14 @@ class _CreateCategoryBottomSheetWidgetState
             SizedBox(height: 20.h),
 
             // Add a photo title
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextApp(
+           TextApp(
                   text: 'Add a photo',
                   theme: Theme.of(context).textTheme.titleLarge!,
                 ),
-                //Remove Image
-                CustomButton(
-                  onPressed: () {},
-                  backgroundColor: Colors.red,
-                  lastRadius: 10,
-                  threeRadius: 10,
-                  text: 'Remove',
-                  width: 120.w,
-                  height: 50.h,
-                ),
-              ],
-            ),
             SizedBox(height: 10.h),
             //Selected Image  and upload image
-            const CategoryUploadImage(
-              image: 'https://www.cnet.com/a/img/resize/a55ce58ff6bcb46cc8ada3adf23193e7e7bbb338/hub/2019/10/09/c4f49e5f-459e-4c9f-bfc9-9e4e9d6256d5/nikon-z50-10.jpg?auto=webp&width=1200',
+              CategoryUploadImage(
+              image: widget.imageUrl,
             ),
             SizedBox(height: 20.h),
             //Enter the category name title

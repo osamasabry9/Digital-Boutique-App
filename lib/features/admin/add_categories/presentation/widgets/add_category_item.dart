@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:digital_boutique/core/common/bottom_shet/custom_bottom_sheet.dart';
 import 'package:digital_boutique/core/common/widgets/custom_container_linear_admin.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/update/update_category_bottom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -81,6 +83,13 @@ class AddCategoryItem extends StatelessWidget {
   }
 
   void _updateCategoryBottomSheet(BuildContext context) {
-   
+    CustomBottomSheet.showModalBottomSheetContainer(
+      context: context,
+      widget: UpdateCategoryBottomWidget(
+        imageUrl: image,
+        categoryId: categoryId,
+        categoryName: name,
+      ),
+    );
   }
 }
