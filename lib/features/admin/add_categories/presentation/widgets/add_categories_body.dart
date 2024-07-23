@@ -1,6 +1,11 @@
+import 'package:digital_boutique/core/common/loading/empty_screen.dart';
+import 'package:digital_boutique/core/common/loading/loading_shimmer.dart';
+import 'package:digital_boutique/core/style/colors/colors_dark.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/add_category_item.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/create/create_category.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddCategoriesBody extends StatelessWidget {
@@ -22,26 +27,59 @@ class AddCategoriesBody extends StatelessWidget {
 
           // Category item list
           Expanded(
-              child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: SizedBox(height: 20.h),
-              ),
-              SliverToBoxAdapter(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => const AddCategoryItem(
-                    name: 'T-Shirts',
-                    categoryId: '1',
-                    image:
-                        'https://www.cnet.com/a/img/resize/a55ce58ff6bcb46cc8ada3adf23193e7e7bbb338/hub/2019/10/09/c4f49e5f-459e-4c9f-bfc9-9e4e9d6256d5/nikon-z50-10.jpg?auto=webp&width=1200',
+              child: RefreshIndicator(
+            color: ColorsDark.blueLight,
+            onRefresh: () async {
+              context.read<GetAllAdminCategoriesBloc>().add(
+                    const GetAllAdminCategoriesEvent.fetchAdminCategories(
+                      isNotLoading: true,
+                    ),
+                  );
+            },
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(child: SizedBox(height: 20.h)),
+                SliverToBoxAdapter(
+                  child: BlocBuilder<GetAllAdminCategoriesBloc,
+                      GetAllAdminCategoriesState>(
+                    builder: (context, state) {
+                      return state.when(
+                        loading: () {
+                          return ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 5,
+                            itemBuilder: (context, index) =>
+                                LoadingShimmer(height: 130.h, borderRadius: 15),
+                            separatorBuilder: (context, index) =>
+                                SizedBox(height: 20.h),
+                          );
+                        },
+                        success: (dataList) {
+                          return ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: dataList.categoriesGetAllList.length,
+                            itemBuilder: (context, index) {
+                              final item = dataList.categoriesGetAllList[index];
+                              return AddCategoryItem(
+                                name: item.name ?? '',
+                                categoryId: item.id ?? '',
+                                image: item.image ?? '',
+                              );
+                            },
+                            separatorBuilder: (context, index) =>
+                                SizedBox(height: 20.h),
+                          );
+                        },
+                        empty: () => const EmptyScreen(),
+                        error: (error) => const SizedBox.shrink(),
+                      );
+                    },
                   ),
-                  separatorBuilder: (context, index) => SizedBox(height: 20.h),
-                  itemCount: 5,
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           )),
         ],
       ),
