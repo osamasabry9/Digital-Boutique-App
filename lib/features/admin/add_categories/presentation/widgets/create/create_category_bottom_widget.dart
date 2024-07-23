@@ -1,8 +1,9 @@
-import 'package:digital_boutique/core/common/widgets/custom_button.dart';
 import 'package:digital_boutique/core/common/widgets/custom_text_field.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
-import 'package:digital_boutique/core/style/colors/colors_dark.dart';
+
 import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/category_upload_image.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/create/add_photo_section.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/create/bloc_consumer_create_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,30 +48,10 @@ class _CreateCategoryBottomSheetWidgetState
             SizedBox(height: 20.h),
 
             // Add a photo title
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextApp(
-                  text: 'Add a photo',
-                  theme: Theme.of(context).textTheme.titleLarge!,
-                ),
-                //Remove Image
-                CustomButton(
-                  onPressed: () {},
-                  backgroundColor: Colors.red,
-                  lastRadius: 10,
-                  threeRadius: 10,
-                  text: 'Remove',
-                  width: 120.w,
-                  height: 50.h,
-                ),
-              ],
-            ),
+            const AddPhotoSection(),
             SizedBox(height: 10.h),
             //Selected Image  and upload image
-            const CategoryUploadImage(
-              image: 'https://www.cnet.com/a/img/resize/a55ce58ff6bcb46cc8ada3adf23193e7e7bbb338/hub/2019/10/09/c4f49e5f-459e-4c9f-bfc9-9e4e9d6256d5/nikon-z50-10.jpg?auto=webp&width=1200',
-            ),
+            const CategoryUploadImage(),
             SizedBox(height: 20.h),
             //Enter the category name title
             TextApp(
@@ -92,17 +73,9 @@ class _CreateCategoryBottomSheetWidgetState
             ),
             SizedBox(height: 20.h),
             //Create a new category Button
-            CustomButton(
-              onPressed: () {
-                _validCreateCategory(context);
-              },
-              backgroundColor: ColorsDark.white,
-              lastRadius: 20,
-              threeRadius: 20,
-              textColor: ColorsDark.blueDark,
-              text: 'Create a new category',
-              width: MediaQuery.of(context).size.width,
-              height: 50.h,
+            BlocConsumerCreateCategory(
+              nameCategoryController: nameCategoryController,
+              formKey: formKey,
             ),
             SizedBox(height: 20.h),
           ],
@@ -110,6 +83,4 @@ class _CreateCategoryBottomSheetWidgetState
       ),
     );
   }
-
-  void _validCreateCategory(BuildContext context) {}
 }
