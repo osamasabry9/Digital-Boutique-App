@@ -1,8 +1,7 @@
-import 'package:digital_boutique/core/common/widgets/custom_button.dart';
 import 'package:digital_boutique/core/common/widgets/custom_text_field.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
-import 'package:digital_boutique/core/style/colors/colors_dark.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/category_upload_image.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/widgets/update/bloc_consumer_update_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,6 +26,13 @@ class _UpdateCategoryBottomWidgetState extends State<UpdateCategoryBottomWidget>
  TextEditingController nameCategoryController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    nameCategoryController.text = widget.categoryName;
+  }
 
   @override
   void dispose() {
@@ -85,17 +91,11 @@ class _UpdateCategoryBottomWidgetState extends State<UpdateCategoryBottomWidget>
             ),
             SizedBox(height: 20.h),
             //Create a new category Button
-            CustomButton(
-              onPressed: () {
-                _validCreateCategory(context);
-              },
-              backgroundColor: ColorsDark.white,
-              lastRadius: 20,
-              threeRadius: 20,
-              textColor: ColorsDark.blueDark,
-              text: 'Create a new category',
-              width: MediaQuery.of(context).size.width,
-              height: 50.h,
+            BlocConsumerUpdateCategory(
+              nameCategoryController: nameCategoryController,
+              formKey: formKey,
+              categoryId: widget.categoryId,
+              imageUrl: widget.imageUrl,
             ),
             SizedBox(height: 20.h),
           ],
@@ -104,5 +104,5 @@ class _UpdateCategoryBottomWidgetState extends State<UpdateCategoryBottomWidget>
     );
   }
 
-  void _validCreateCategory(BuildContext context) {}
+
 }
