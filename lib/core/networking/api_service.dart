@@ -67,4 +67,9 @@ abstract class ApiService {
   Future<void> deleteCategory(
     @Body() Map<String, dynamic> mutation,
   );
+
+  @POST(graphql)
+  Future<void> updateCategory(
+    @Body() Map<String, dynamic> mutation,
+  );
 }
