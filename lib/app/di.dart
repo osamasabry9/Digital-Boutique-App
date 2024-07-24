@@ -9,6 +9,7 @@ import 'package:digital_boutique/features/admin/add_categories/data/repos/catego
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/create_category/create_category_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/data_source/dashboard_data_source.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/repos/dashboard_repo.dart';
 import 'package:digital_boutique/features/admin/dashboard/presentation/bloc/categories_number/categories_number_bloc.dart';
@@ -70,8 +71,11 @@ Future<void> _initCategoriesAdmin() async {
     ..registerFactory(
       () => CreateCategoryBloc(getIt<CategoriesAdminRepos>()),
     )
-     ..registerFactory(
+    ..registerFactory(
       () => DeleteCategoryBloc(getIt<CategoriesAdminRepos>()),
+    )
+    ..registerFactory(
+      () => UpdateCategoryBloc(getIt<CategoriesAdminRepos>()),
     )
     ..registerLazySingleton(
       () => CategoriesAdminRepos(getIt<CategoriesAdminDataSource>()),
