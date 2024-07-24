@@ -4,6 +4,12 @@ import 'package:digital_boutique/core/networking/dio_factory.dart';
 import 'package:digital_boutique/core/service/upload_image/cubit/upload_image_cubit.dart';
 import 'package:digital_boutique/core/service/upload_image/data_source/upload_image_data_source.dart';
 import 'package:digital_boutique/core/service/upload_image/repo/upload_image_repo.dart';
+import 'package:digital_boutique/features/admin/add_categories/data/data_source/categories_admin_data_source.dart';
+import 'package:digital_boutique/features/admin/add_categories/data/repos/categories_admin_repos.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/create_category/create_category_bloc.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/data_source/dashboard_data_source.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/repos/dashboard_repo.dart';
 import 'package:digital_boutique/features/admin/dashboard/presentation/bloc/categories_number/categories_number_bloc.dart';
@@ -21,6 +27,7 @@ Future<void> setupGetIt() async {
   await _initCore();
   await _initAuth();
   await _initDashBoard();
+  await _initCategoriesAdmin();
 }
 
 /// Initializes the core functionality by creating an instance of Dio using DioFactory,
@@ -54,4 +61,26 @@ Future<void> _initDashBoard() async {
     ..registerFactory(() => UsersNumberBloc(getIt<DashBoardRepo>()))
     ..registerLazySingleton(() => DashBoardRepo(getIt<DashBoardDataSource>()))
     ..registerLazySingleton(() => DashBoardDataSource(getIt<ApiService>()));
+}
+
+Future<void> _initCategoriesAdmin() async {
+  getIt
+    ..registerFactory(
+      () => GetAllAdminCategoriesBloc(getIt<CategoriesAdminRepos>()),
+    )
+    ..registerFactory(
+      () => CreateCategoryBloc(getIt<CategoriesAdminRepos>()),
+    )
+    ..registerFactory(
+      () => DeleteCategoryBloc(getIt<CategoriesAdminRepos>()),
+    )
+    ..registerFactory(
+      () => UpdateCategoryBloc(getIt<CategoriesAdminRepos>()),
+    )
+    ..registerLazySingleton(
+      () => CategoriesAdminRepos(getIt<CategoriesAdminDataSource>()),
+    )
+    ..registerLazySingleton(
+      () => CategoriesAdminDataSource(getIt<ApiService>()),
+    );
 }
