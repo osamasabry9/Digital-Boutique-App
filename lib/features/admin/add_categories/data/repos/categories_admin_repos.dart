@@ -4,6 +4,7 @@ import 'package:digital_boutique/features/admin/add_categories/data/data_source/
 import 'package:digital_boutique/features/admin/add_categories/data/models/create_category_request_body.dart';
 import 'package:digital_boutique/features/admin/add_categories/data/models/create_category_response.dart';
 import 'package:digital_boutique/features/admin/add_categories/data/models/get_all_categories_response.dart';
+import 'package:digital_boutique/features/admin/add_categories/data/models/update_category_request_body.dart';
 
 class CategoriesAdminRepos {
 
@@ -35,6 +36,15 @@ class CategoriesAdminRepos {
   Future<ApiResult<void>> deleteCategory(String categoryId) async {
     try {
       await _dataSource.deleteCategory(categoryId: categoryId);
+      return const ApiResult.success(null);
+    } catch (error) {
+      return const ApiResult.failure(ErrorHelper.errorMessage);
+    }
+  }
+
+  Future<ApiResult<void>> updateCategory(UpdateCategoryRequestBody requestBody) async {
+    try {
+      await _dataSource.updateCategory(body: requestBody);
       return const ApiResult.success(null);
     } catch (error) {
       return const ApiResult.failure(ErrorHelper.errorMessage);
