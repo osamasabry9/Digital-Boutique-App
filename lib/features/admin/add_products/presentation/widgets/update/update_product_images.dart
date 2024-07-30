@@ -109,7 +109,7 @@ class UpdateSelectedImageWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage(imageList[index].imageProductFormate()),
+                image: NetworkImage(imageList[index]),
               ),
             ),
           ),
