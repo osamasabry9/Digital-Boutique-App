@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digital_boutique/core/common/widgets/custom_container_linear_admin.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/widgets/delete/delete_product_widget.dart';
-import 'package:digital_boutique/features/admin/add_products/presentation/widgets/update/update_product_widget.dart';
+import 'package:digital_boutique/features/admin/add_products/presentation/widgets/update/update_button_product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,23 +26,13 @@ class ProductAdminItem extends StatelessWidget {
       height: 250.h,
       width: 165.w,
       child: Padding(
-        padding:  EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: 10.w,
           vertical: 10.h,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Delete Button
-                DeleteProductWidget(),
-                // Update Button
-                UpdateProductWidget(),
-              ],
-            ),
-        
             // Product Image
             Flexible(
               child: Center(
@@ -59,21 +49,33 @@ class ProductAdminItem extends StatelessWidget {
             // Product Title
             TextApp(
               text: title,
-              theme: Theme.of(context).textTheme.titleLarge!,
+              theme: Theme.of(context).textTheme.titleMedium!,
               maxLines: 1,
             ),
             SizedBox(height: 5.h),
             // Product Title
             TextApp(
               text: categoryName,
-              theme: Theme.of(context).textTheme.titleSmall!,
+              theme: Theme.of(context).textTheme.labelMedium!,
               maxLines: 1,
             ),
             SizedBox(height: 5.h),
             // Product Price
             TextApp(
               text: '\$ $price',
-              theme: Theme.of(context).textTheme.titleSmall!,
+              theme: Theme.of(context).textTheme.labelLarge!,
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Delete Button
+                DeleteProductWidget(),
+                // Update Button
+                UpdateButtonProductWidget(),
+              ],
             ),
           ],
         ),
