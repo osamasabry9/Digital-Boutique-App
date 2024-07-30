@@ -13,6 +13,8 @@ class UploadImageCubit extends Cubit<UploadImageState> {
 
   String getImageUrl = '';
 
+  List<String> imageList = ['', '', ''];
+  List<String> imageUpdateList = [];
 
 // pick image and save it in file and upload it to server
   Future<void> uploadImage() async {
@@ -32,6 +34,53 @@ class UploadImageCubit extends Cubit<UploadImageState> {
       },
     );
   }
+
+  // pick image and save it in file and upload it to server with List
+  Future<void> uploadImageList({required int indexId}) async {
+    final pickedImage = await PickImageUtils().pickImage();
+    if (pickedImage == null) return;
+
+    emit(UploadImageState.loadingList(indexId));
+    final result = await _repo.uploadImage(pickedImage);
+
+    result.when(
+      success: (image) {
+        imageList
+          ..removeAt(indexId)
+          ..insert(indexId, image.location ?? '');
+        emit(const UploadImageState.success());
+      },
+      failure: (error) {
+        emit(UploadImageState.error(error: error));
+      },
+    );
+  }
+
+// Upload update image list
+  Future<void> uploadUpdateImageList({
+    required int indexId,
+    required List<String> productImageList,
+  }) async {
+    final pickedImage = await PickImageUtils().pickImage();
+    if (pickedImage == null) return;
+
+    emit(UploadImageState.loadingList(indexId));
+    final result = await _repo.uploadImage(pickedImage);
+
+    result.when(
+      success: (image) {
+        imageUpdateList = productImageList;
+        imageUpdateList
+          ..removeAt(indexId)
+          ..insert(indexId, image.location ?? '');
+        emit(const UploadImageState.success());
+      },
+      failure: (error) {
+        emit(UploadImageState.error(error: error));
+      },
+    );
+  }
+
 
   // remove image
   void removeImage() {
