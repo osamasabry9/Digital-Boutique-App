@@ -10,6 +10,9 @@ import 'package:digital_boutique/features/admin/add_categories/presentation/bloc
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
+import 'package:digital_boutique/features/admin/add_products/data/data_source/products_admin_data_source.dart';
+import 'package:digital_boutique/features/admin/add_products/data/repos/products_admin_repo.dart';
+import 'package:digital_boutique/features/admin/add_products/presentation/bloc/get_all_admin_products/get_all_admin_products_bloc.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/data_source/dashboard_data_source.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/repos/dashboard_repo.dart';
 import 'package:digital_boutique/features/admin/dashboard/presentation/bloc/categories_number/categories_number_bloc.dart';
@@ -28,6 +31,7 @@ Future<void> setupGetIt() async {
   await _initAuth();
   await _initDashBoard();
   await _initCategoriesAdmin();
+  await _initProductsAdmin();
 }
 
 /// Initializes the core functionality by creating an instance of Dio using DioFactory,
@@ -82,5 +86,18 @@ Future<void> _initCategoriesAdmin() async {
     )
     ..registerLazySingleton(
       () => CategoriesAdminDataSource(getIt<ApiService>()),
+    );
+}
+
+Future<void> _initProductsAdmin() async {
+  getIt
+    ..registerFactory(
+      () => GetAllAdminProductsBloc(getIt<ProductsAdminRepo>()),
+    )
+    ..registerLazySingleton(
+      () => ProductsAdminRepo(getIt<ProductsAdminDataSource>()),
+    )
+    ..registerLazySingleton(
+      () => ProductsAdminDataSource(getIt<ApiService>()),
     );
 }
