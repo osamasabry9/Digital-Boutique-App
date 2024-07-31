@@ -1,12 +1,11 @@
 import 'package:digital_boutique/core/networking/api_service.dart';
 import 'package:digital_boutique/core/networking/graphql_queries/admin/products_queries.dart';
+import 'package:digital_boutique/features/admin/add_products/data/models/create_product_request_body.dart';
 import 'package:digital_boutique/features/admin/add_products/data/models/get_all_product_response.dart';
 
 class ProductsAdminDataSource {
-
   ProductsAdminDataSource(this._graphql);
   final ApiService _graphql;
-
 
   Future<GetAllProductResponse> getAllProducts() async {
     final response = await _graphql.getAllProducts(
@@ -14,5 +13,12 @@ class ProductsAdminDataSource {
     );
 
     return response;
+  }
+
+  Future<void> createProduct({
+    required CreateProductRequestBody body,
+  }) async {
+    await _graphql
+        .createProduct(ProductsQueries().createProductMap(body: body));
   }
 }
