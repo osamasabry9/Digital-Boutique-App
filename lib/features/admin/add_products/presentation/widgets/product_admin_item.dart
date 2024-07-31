@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digital_boutique/core/common/widgets/custom_container_linear_admin.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
+import 'package:digital_boutique/core/extensions/string_exetension.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/widgets/delete/delete_product_widget.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/widgets/update/update_button_product_widget.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class ProductAdminItem extends StatelessWidget {
             Flexible(
               child: Center(
                 child: CachedNetworkImage(
-                  imageUrl: imageUrl,
+                  imageUrl: imageUrl.imageProductFormate(),
                   height: 200.h,
                   width: 120.w,
                   errorWidget: (context, url, error) =>
