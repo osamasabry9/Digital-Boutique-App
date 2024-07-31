@@ -1,10 +1,11 @@
-import 'package:digital_boutique/core/common/widgets/custom_button.dart';
 import 'package:digital_boutique/core/common/widgets/custom_drop_down.dart';
 import 'package:digital_boutique/core/common/widgets/custom_text_field.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
-import 'package:digital_boutique/core/style/colors/colors_dark.dart';
+import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
+import 'package:digital_boutique/features/admin/add_products/presentation/widgets/create/bloc_consumer_create_product.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/widgets/create/create_product_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateProductBottomSheet extends StatefulWidget {
@@ -23,7 +24,7 @@ class _CreateProductBottomSheetState extends State<CreateProductBottomSheet> {
   final fromKey = GlobalKey<FormState>();
 
   String? categoryValueName;
-  String? categoryValueId;
+  double? categoryValueId;
 
   @override
   void dispose() {
@@ -60,6 +61,7 @@ class _CreateProductBottomSheetState extends State<CreateProductBottomSheet> {
               SizedBox(height: 15.h),
               //Update Image Widget
               const CreateProductImages(),
+              SizedBox(height: 15.h),
               TextApp(
                 text: 'Title',
                 theme: Theme.of(context).textTheme.titleLarge!,
@@ -120,24 +122,51 @@ class _CreateProductBottomSheetState extends State<CreateProductBottomSheet> {
                 theme: Theme.of(context).textTheme.titleLarge!,
               ),
               SizedBox(height: 15.h),
-              //Category Dropdown
-              CustomCreateDropDown(
-                items: [],
-                hintText: 'Select Category',
-                onChanged: (value) {},
-                value: categoryValueName,
-              ),
+              // Category Drop Down
+              BlocBuilder<GetAllAdminCategoriesBloc,
+                  GetAllAdminCategoriesState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    success: (category) {
+                      return CustomCreateDropDown(
+                        hintText: 'Select a Category',
+                        items: category.categoryDropdownList,
+                        onChanged: (value) {
+                          setState(() {
+                            categoryValueName = value;
 
-              CustomButton(
-                onPressed: () {},
-                backgroundColor: ColorsDark.white,
-                lastRadius: 20,
-                threeRadius: 20,
-                textColor: ColorsDark.blueDark,
-                text: 'Create Product',
-                width: MediaQuery.of(context).size.width,
-                height: 50.h,
+                            final categoryIdString = category
+                                .categoriesGetAllList
+                                .firstWhere((e) => e.name == value)
+                                .id!;
+                            categoryValueId = double.parse(categoryIdString);
+                          });
+                        },
+                        value: categoryValueName,
+                      );
+                    },
+                    orElse: () {
+                      return CustomCreateDropDown(
+                        hintText: 'Select a Category',
+                        items: const [''],
+                        onChanged: (value) {},
+                        value: '',
+                      );
+                    },
+                  );
+                },
               ),
+              SizedBox(height: 15.h),
+
+              BlocConsumerCreateProduct(
+                titleController: _titleController,
+                fromKey: fromKey,
+                categoryValueName: categoryValueName,
+                descriptionController: _descriptionController,
+                priceController: _priceController,
+                categoryValueId: categoryValueId,
+              ),
+              SizedBox(height: 20.h),
             ],
           ),
         ),
