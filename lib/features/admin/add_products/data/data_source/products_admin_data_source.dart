@@ -21,4 +21,9 @@ class ProductsAdminDataSource {
     await _graphql
         .createProduct(ProductsQueries().createProductMap(body: body));
   }
+
+  Future<void> deleteProduct({required String productId}) async {
+    await _graphql
+        .deleteProduct(ProductsQueries().deleteMapQuery(productId: productId));
+  }
 }
