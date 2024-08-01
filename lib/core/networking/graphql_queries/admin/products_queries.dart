@@ -29,7 +29,6 @@ class ProductsQueries {
     };
   }
 
-  // Product create
   //Create Product
   Map<String, dynamic> createProductMap({
     required CreateProductRequestBody body,
@@ -56,6 +55,20 @@ class ProductsQueries {
         'description': body.description,
         'categoryId': body.categoryId,
         'imagesList': body.imageList,
+      },
+    };
+  }
+
+  // delete product
+  Map<String, dynamic> deleteMapQuery({required String productId}) {
+    return {
+      'query': r'''
+            mutation DeleteCategory($productId: ID!) {
+              deleteProduct(id: $productId)
+            }
+      ''',
+      'variables': {
+        'productId': productId,
       },
     };
   }
