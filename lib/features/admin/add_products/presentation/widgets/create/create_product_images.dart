@@ -69,7 +69,7 @@ class CreateProductImages extends StatelessWidget {
           },
         );
       },
-      separatorBuilder: (context, index) => SizedBox(height: 6.h),
+      separatorBuilder: (context, index) => SizedBox(height: 8.h),
     );
   }
 }
@@ -88,7 +88,7 @@ class SleetedYourProductImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return context.read<UploadImageCubit>().imageList[index].isNotEmpty
         ? Container(
-            height: 90.h,
+            height: 100.h,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: Colors.grey.withOpacity(0.8),
@@ -103,7 +103,7 @@ class SleetedYourProductImage extends StatelessWidget {
         : InkWell(
             onTap: onTap,
             child: Container(
-              height: 90.h,
+              height: 100.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.8),

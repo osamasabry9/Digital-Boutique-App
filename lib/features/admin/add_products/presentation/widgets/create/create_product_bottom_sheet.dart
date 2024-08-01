@@ -55,7 +55,7 @@ class _CreateProductBottomSheetState extends State<CreateProductBottomSheet> {
               ),
               SizedBox(height: 20.h),
               TextApp(
-                text: 'Upload a photos',
+                text: 'Upload photos',
                 theme: Theme.of(context).textTheme.titleLarge!,
               ),
               SizedBox(height: 15.h),
