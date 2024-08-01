@@ -13,6 +13,7 @@ class ProductAdminItem extends StatelessWidget {
     required this.title,
     required this.categoryName,
     required this.price,
+    required this.productId,
     super.key,
   });
 
@@ -20,6 +21,7 @@ class ProductAdminItem extends StatelessWidget {
   final String title;
   final String categoryName;
   final String price;
+  final String productId;
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +71,11 @@ class ProductAdminItem extends StatelessWidget {
             SizedBox(
               height: 5.h,
             ),
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Delete Button
-                DeleteProductWidget(),
+                DeleteProductWidget(productId: productId),
                 // Update Button
                 UpdateButtonProductWidget(),
               ],

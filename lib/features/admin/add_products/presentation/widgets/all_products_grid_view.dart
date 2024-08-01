@@ -65,9 +65,10 @@ class AllProductsGridView extends StatelessWidget {
                           final product = productList[index];
                           return ProductAdminItem(
                             imageUrl: product.images!.first,
-                            title: product.title!,
-                            categoryName: product.category!.name!,
-                            price: product.price!.toString(),
+                            title: product.title ?? '',
+                            categoryName: product.category!.name ?? '',
+                            price: product.price.toString() ,
+                            productId: product.id ?? '',
                           );
                         },
                       );
