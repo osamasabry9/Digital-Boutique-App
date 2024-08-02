@@ -15,6 +15,7 @@ import 'package:digital_boutique/features/admin/add_products/data/repos/products
 import 'package:digital_boutique/features/admin/add_products/presentation/bloc/create_product/create_product_bloc.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/bloc/delete_product/delete_product_bloc.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/bloc/get_all_admin_products/get_all_admin_products_bloc.dart';
+import 'package:digital_boutique/features/admin/add_products/presentation/bloc/update_product/update_product_bloc.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/data_source/dashboard_data_source.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/repos/dashboard_repo.dart';
 import 'package:digital_boutique/features/admin/dashboard/presentation/bloc/categories_number/categories_number_bloc.dart';
@@ -99,6 +100,8 @@ Future<void> _initProductsAdmin() async {
       () => CreateProductBloc(getIt<ProductsAdminRepo>()),
     )..registerFactory(
       () => DeleteProductBloc(getIt<ProductsAdminRepo>()),
+    )..registerFactory(
+      () => UpdateProductBloc(getIt<ProductsAdminRepo>()),
     )
     ..registerLazySingleton(
       () => ProductsAdminRepo(getIt<ProductsAdminDataSource>()),
