@@ -5,6 +5,7 @@ class UploadImageState with _$UploadImageState {
   const factory UploadImageState.initial() = _Initial;
   const factory UploadImageState.loading() = LoadingState;
 
+  const factory UploadImageState.loadingList(int index) = LoadingListState;
   const factory UploadImageState.success() = SuccessState;
   const factory UploadImageState.removeImage({required String imageUrl}) =
       RemoveImageState;
