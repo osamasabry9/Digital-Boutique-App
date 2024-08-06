@@ -1,5 +1,6 @@
 import 'package:digital_boutique/core/common/toast/show_toast.dart';
 import 'package:digital_boutique/core/extensions/context_extension.dart';
+import 'package:digital_boutique/core/extensions/string_exetension.dart';
 import 'package:digital_boutique/core/language/lang_keys.dart';
 import 'package:digital_boutique/core/service/upload_image/cubit/upload_image_cubit.dart';
 import 'package:flutter/material.dart';
@@ -109,7 +110,7 @@ class UpdateSelectedImageWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage(imageList[index]),
+                image: NetworkImage(imageList[index].imageProductFormate()),
               ),
             ),
           ),
