@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digital_boutique/core/common/widgets/custom_container_linear_admin.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
 import 'package:digital_boutique/core/extensions/string_exetension.dart';
+import 'package:digital_boutique/features/admin/add_products/data/models/get_all_product_response.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/widgets/delete/delete_product_widget.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/widgets/update/update_button_product_widget.dart';
 import 'package:flutter/material.dart';
@@ -9,19 +10,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductAdminItem extends StatelessWidget {
   const ProductAdminItem({
-    required this.imageUrl,
-    required this.title,
-    required this.categoryName,
-    required this.price,
-    required this.productId,
+    required this.product,
     super.key,
   });
 
-  final String imageUrl;
-  final String title;
-  final String categoryName;
-  final String price;
-  final String productId;
+  final ProductGetAllModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +33,7 @@ class ProductAdminItem extends StatelessWidget {
             Flexible(
               child: Center(
                 child: CachedNetworkImage(
-                  imageUrl: imageUrl.imageProductFormate(),
+                  imageUrl:product.images!.first.imageProductFormate(),
                   height: 200.h,
                   width: 120.w,
                   errorWidget: (context, url, error) =>
@@ -51,33 +44,33 @@ class ProductAdminItem extends StatelessWidget {
             SizedBox(height: 10.h),
             // Product Title
             TextApp(
-              text: title,
+              text: product.title ?? '',
               theme: Theme.of(context).textTheme.titleMedium!,
               maxLines: 1,
             ),
             SizedBox(height: 5.h),
             // Product Title
             TextApp(
-              text: categoryName,
+              text: product.category!.name ?? '',
               theme: Theme.of(context).textTheme.labelMedium!,
               maxLines: 1,
             ),
             SizedBox(height: 5.h),
             // Product Price
             TextApp(
-              text: '\$ $price',
+              text: '\$ ${product.price}',
               theme: Theme.of(context).textTheme.labelLarge!,
             ),
             SizedBox(
               height: 5.h,
             ),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Delete Button
-                DeleteProductWidget(productId: productId),
+                DeleteProductWidget(productId: product.id ?? ''),
                 // Update Button
-                UpdateButtonProductWidget(),
+                UpdateButtonProductWidget(product: product),
               ],
             ),
           ],

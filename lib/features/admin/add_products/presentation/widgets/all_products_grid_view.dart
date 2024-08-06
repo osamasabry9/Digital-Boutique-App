@@ -62,14 +62,7 @@ class AllProductsGridView extends StatelessWidget {
                           childAspectRatio: 165 / 250,
                         ),
                         itemBuilder: (context, index) {
-                          final product = productList[index];
-                          return ProductAdminItem(
-                            imageUrl: product.images!.first,
-                            title: product.title ?? '',
-                            categoryName: product.category!.name ?? '',
-                            price: product.price.toString() ,
-                            productId: product.id ?? '',
-                          );
+                          return ProductAdminItem(product: productList[index]);
                         },
                       );
                     },
