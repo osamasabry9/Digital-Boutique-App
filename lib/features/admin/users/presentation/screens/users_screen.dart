@@ -1,6 +1,7 @@
 import 'package:digital_boutique/app/di.dart';
 import 'package:digital_boutique/core/common/widgets/admin_app_bar.dart';
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
+import 'package:digital_boutique/features/admin/users/presentation/bloc/delete_user/delete_user_bloc.dart';
 import 'package:digital_boutique/features/admin/users/presentation/bloc/get_all_users/get_all_users_bloc.dart';
 import 'package:digital_boutique/features/admin/users/presentation/widgets/user_body.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class UsersScreen extends StatelessWidget {
           create: (context) => getIt<GetAllUsersBloc>()
             ..add(const GetAllUsersEvent.getAllUsers(isNotLoading: true)),
         ),
+
+        BlocProvider(create: (context) => getIt<DeleteUserBloc>()),
       ],
       child: const Scaffold(
         backgroundColor: ColorsDark.mainColor,

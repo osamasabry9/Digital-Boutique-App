@@ -1,5 +1,6 @@
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
 import 'package:digital_boutique/features/admin/users/data/models/get_all_users_response.dart';
+import 'package:digital_boutique/features/admin/users/presentation/widgets/delete_user_icon.dart';
 import 'package:digital_boutique/features/admin/users/presentation/widgets/table_cell_item_widget.dart';
 import 'package:digital_boutique/features/admin/users/presentation/widgets/table_cell_title_widget.dart';
 import 'package:flutter/material.dart';
@@ -44,13 +45,13 @@ class TableForUsers extends StatelessWidget {
               //Email
               TableCellItemWidget(text: userList[index].email ?? ''),
               //Delete
-              const TableCell(
+               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
-                child: Icon(Icons.delete, color: Colors.red, size: 25),
+                child: DeleteUserIcon(userId: userList[index].id ?? ''),
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
