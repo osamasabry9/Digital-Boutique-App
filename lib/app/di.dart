@@ -23,6 +23,7 @@ import 'package:digital_boutique/features/admin/dashboard/presentation/bloc/prod
 import 'package:digital_boutique/features/admin/dashboard/presentation/bloc/users_number/users_number_bloc.dart';
 import 'package:digital_boutique/features/admin/users/data/data_sources/users_data_source.dart';
 import 'package:digital_boutique/features/admin/users/data/repos/users_repo.dart';
+import 'package:digital_boutique/features/admin/users/presentation/bloc/delete_user/delete_user_bloc.dart';
 import 'package:digital_boutique/features/admin/users/presentation/bloc/get_all_users/get_all_users_bloc.dart';
 import 'package:digital_boutique/features/auth/data/data_source/auth_data_source.dart';
 import 'package:digital_boutique/features/auth/data/reposatory/auth_repos.dart';
@@ -100,11 +101,14 @@ Future<void> _initProductsAdmin() async {
   getIt
     ..registerFactory(
       () => GetAllAdminProductsBloc(getIt<ProductsAdminRepo>()),
-    )..registerFactory(
+    )
+    ..registerFactory(
       () => CreateProductBloc(getIt<ProductsAdminRepo>()),
-    )..registerFactory(
+    )
+    ..registerFactory(
       () => DeleteProductBloc(getIt<ProductsAdminRepo>()),
-    )..registerFactory(
+    )
+    ..registerFactory(
       () => UpdateProductBloc(getIt<ProductsAdminRepo>()),
     )
     ..registerLazySingleton(
@@ -119,6 +123,9 @@ Future<void> _initUsersAdmin() async {
   getIt
     ..registerFactory(
       () => GetAllUsersBloc(getIt<UsersRepo>()),
+    )
+    ..registerFactory(
+      () => DeleteUserBloc(getIt<UsersRepo>()),
     )
     ..registerLazySingleton(
       () => UsersRepo(getIt<UserDataSource>()),
