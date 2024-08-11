@@ -6,6 +6,7 @@ import 'package:digital_boutique/features/admin/add_products/data/models/get_all
 import 'package:digital_boutique/features/admin/dashboard/data/models/categories_number_response.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/models/products_number_response.dart';
 import 'package:digital_boutique/features/admin/dashboard/data/models/users_number_response.dart';
+import 'package:digital_boutique/features/admin/users/data/models/get_all_users_response.dart';
 import 'package:digital_boutique/features/auth/data/models/login_response.dart';
 import 'package:digital_boutique/features/auth/data/models/sign_up_response.dart';
 import 'package:digital_boutique/features/auth/data/models/user_role_response.dart';
@@ -79,18 +80,23 @@ abstract class ApiService {
     @Body() Map<String, dynamic> query,
   );
 
-   @POST(graphql)
+  @POST(graphql)
   Future<void> createProduct(
     @Body() Map<String, dynamic> mutation,
   );
-  
+
   @POST(graphql)
   Future<void> deleteProduct(
     @Body() Map<String, dynamic> mutation,
   );
-  
+
   @POST(graphql)
   Future<void> updateProduct(
     @Body() Map<String, dynamic> mutation,
   );
+  @POST(graphql)
+  Future<GetAllUsersResponse> getAllUsers(@Body() Map<String, dynamic> query);
+
+  @POST(graphql)
+  Future<void> deleteUser(@Body() Map<String, dynamic> mutation);
 }
