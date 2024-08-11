@@ -1,4 +1,5 @@
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
+import 'package:digital_boutique/features/admin/users/data/models/get_all_users_response.dart';
 import 'package:digital_boutique/features/admin/users/presentation/widgets/table_cell_item_widget.dart';
 import 'package:digital_boutique/features/admin/users/presentation/widgets/table_cell_title_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TableForUsers extends StatelessWidget {
   const TableForUsers({
+    required this.userList,
     super.key,
   });
-
+  final List<UsersModel> userList;
   @override
   Widget build(BuildContext context) {
     return Table(
@@ -34,15 +36,15 @@ class TableForUsers extends StatelessWidget {
           ],
         ),
         ...List.generate(
-          4,
-          (index) => const TableRow(
+          userList.length,
+          (index) => TableRow(
             children: [
               //Name
-              TableCellItemWidget(text: 'Name'),
+              TableCellItemWidget(text: userList[index].name ?? ''),
               //Email
-              TableCellItemWidget(text: 'Email'),
+              TableCellItemWidget(text: userList[index].email ?? ''),
               //Delete
-              TableCell(
+              const TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Icon(Icons.delete, color: Colors.red, size: 25),
               ),
