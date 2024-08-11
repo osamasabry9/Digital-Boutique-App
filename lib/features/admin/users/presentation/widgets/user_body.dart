@@ -31,26 +31,28 @@ class UserBody extends StatelessWidget {
               },
               child: CustomScrollView(
                 slivers: [
-                  BlocBuilder<GetAllUsersBloc, GetAllUsersState>(
-                    builder: (context, state) {
-                      return state.when(
-                        loading: () {
-                          return const Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
-                          );
-                        },
-                        search: (searchUserList) {
-                          return TableForUsers(userList: searchUserList);
-                        },
-                        success: (userList) {
-                          return TableForUsers(userList: userList);
-                        },
-                        empty: EmptyScreen.new,
-                        error: Text.new,
-                      );
-                    },
+                  SliverToBoxAdapter(
+                    child: BlocBuilder<GetAllUsersBloc, GetAllUsersState>(
+                      builder: (context, state) {
+                        return state.when(
+                          loading: () {
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            );
+                          },
+                          search: (searchUserList) {
+                            return TableForUsers(userList: searchUserList);
+                          },
+                          success: (userList) {
+                            return TableForUsers(userList: userList);
+                          },
+                          empty: EmptyScreen.new,
+                          error: Text.new,
+                        );
+                      },
+                    ),
                   ),
                   SliverToBoxAdapter(child: SizedBox(height: 25.h)),
                 ],
