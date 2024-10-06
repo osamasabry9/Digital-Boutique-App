@@ -51,7 +51,7 @@ void main() async {
 
 /// To check if user is logged in or not.
 Future<void> checkIfLoggedInUser() async {
-  String? userToken =
+  final String userToken =
       await SecureStorageHelper.getSecuredString(PrefKeys.accessToken);
   if (!userToken.isNullOrEmpty()) {
     checkAdmin();
@@ -62,7 +62,7 @@ Future<void> checkIfLoggedInUser() async {
 }
 
 void checkAdmin() {
-  String? userRole = SharedPref().getString(PrefKeys.userRole);
+  final userRole = SharedPref().getString(PrefKeys.userRole);
   if (userRole == 'admin') {
     isAdmin = true;
   } else {
