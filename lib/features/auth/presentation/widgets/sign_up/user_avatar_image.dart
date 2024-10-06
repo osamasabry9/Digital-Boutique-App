@@ -48,7 +48,7 @@ class UserAvatarImage extends StatelessWidget {
                   CircleAvatar(
                     radius: 38.r,
                     backgroundImage: NetworkImage(
-                            context.read<UploadImageCubit>().getImageUrl)
+                            context.read<UploadImageCubit>().getImageUrl,)
                         as ImageProvider,
                     backgroundColor: Colors.grey.withOpacity(0.1),
                   ),
