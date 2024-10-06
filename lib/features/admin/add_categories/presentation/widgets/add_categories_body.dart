@@ -52,10 +52,10 @@ class AddCategoriesBody extends StatelessWidget {
                       );
                     },
                   ),
-                )
+                ),
               ],
             ),
-          )),
+          ),),
         ],
       ),
     );
