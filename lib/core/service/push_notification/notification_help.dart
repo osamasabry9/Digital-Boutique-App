@@ -26,7 +26,7 @@ class NotificationHelp {
       'universe_domain': 'googleapis.com',
     };
 
-    final List<String> scopes = [
+    final scopes = <String>[
       'https://www.googleapis.com/auth/userinfo.email',
       'https://www.googleapis.com/auth/firebase.database',
       'https://www.googleapis.com/auth/firebase.messaging',
