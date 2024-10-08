@@ -1,16 +1,22 @@
 import 'package:digital_boutique/core/common/widgets/custom_button.dart';
 import 'package:digital_boutique/core/common/widgets/custom_text_field.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
+import 'package:digital_boutique/core/extensions/context_extension.dart';
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
 import 'package:digital_boutique/core/style/fonts/font_family_helper.dart';
 import 'package:digital_boutique/core/style/fonts/font_weight_helper.dart';
+import 'package:digital_boutique/features/admin/add_notifications/data/models/add_notification_model.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditNotificationBottomSheet extends StatefulWidget {
   const EditNotificationBottomSheet({
+    required this.notificationModel,
     super.key,
   });
+  final AddNotificationModel notificationModel;
 
   @override
   State<EditNotificationBottomSheet> createState() =>
@@ -28,6 +34,10 @@ class _EditNotificationBottomSheetState
   @override
   void initState() {
     super.initState();
+
+    titleController.text = widget.notificationModel.title;
+    bodyController.text = widget.notificationModel.body;
+    productIdController.text = widget.notificationModel.productId.toString();
   }
 
   @override
@@ -144,6 +154,19 @@ class _EditNotificationBottomSheetState
   }
 
   void _validAddNotification(BuildContext context) {
-    if (formKey.currentState!.validate()) {}
+    if (formKey.currentState!.validate()) {
+      widget.notificationModel.title = titleController.text.isEmpty
+          ? widget.notificationModel.title
+          : titleController.text.trim();
+      widget.notificationModel.body = bodyController.text.isEmpty
+          ? widget.notificationModel.body
+          : bodyController.text.trim();
+      widget.notificationModel.productId = productIdController.text.isEmpty
+          ? widget.notificationModel.productId
+          : int.parse(productIdController.text.trim());
+
+      widget.notificationModel.save();
+      context.pop();
+    }
   }
 }
