@@ -19,19 +19,19 @@ mixin _$GetAllNotificationAdminEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getAllNotificion,
+    required TResult Function() getAllNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getAllNotificion,
+    TResult? Function()? getAllNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getAllNotificion,
+    TResult Function()? getAllNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,19 +39,19 @@ mixin _$GetAllNotificationAdminEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(FetchAllNotificationAdminEvent value)
-        getAllNotificion,
+        getAllNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllNotificationAdminEvent value)? getAllNotificion,
+    TResult? Function(FetchAllNotificationAdminEvent value)? getAllNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(FetchAllNotificationAdminEvent value)? getAllNotificion,
+    TResult Function(FetchAllNotificationAdminEvent value)? getAllNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,7 +117,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getAllNotificion,
+    required TResult Function() getAllNotification,
   }) {
     return started();
   }
@@ -126,7 +126,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getAllNotificion,
+    TResult? Function()? getAllNotification,
   }) {
     return started?.call();
   }
@@ -135,7 +135,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getAllNotificion,
+    TResult Function()? getAllNotification,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -149,7 +149,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(FetchAllNotificationAdminEvent value)
-        getAllNotificion,
+        getAllNotification,
   }) {
     return started(this);
   }
@@ -158,7 +158,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllNotificationAdminEvent value)? getAllNotificion,
+    TResult? Function(FetchAllNotificationAdminEvent value)? getAllNotification,
   }) {
     return started?.call(this);
   }
@@ -167,7 +167,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(FetchAllNotificationAdminEvent value)? getAllNotificion,
+    TResult Function(FetchAllNotificationAdminEvent value)? getAllNotification,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -208,7 +208,7 @@ class _$FetchAllNotificationAdminEventImpl
 
   @override
   String toString() {
-    return 'GetAllNotificationAdminEvent.getAllNotificion()';
+    return 'GetAllNotificationAdminEvent.getAllNotification()';
   }
 
   @override
@@ -225,29 +225,29 @@ class _$FetchAllNotificationAdminEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getAllNotificion,
+    required TResult Function() getAllNotification,
   }) {
-    return getAllNotificion();
+    return getAllNotification();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getAllNotificion,
+    TResult? Function()? getAllNotification,
   }) {
-    return getAllNotificion?.call();
+    return getAllNotification?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getAllNotificion,
+    TResult Function()? getAllNotification,
     required TResult orElse(),
   }) {
-    if (getAllNotificion != null) {
-      return getAllNotificion();
+    if (getAllNotification != null) {
+      return getAllNotification();
     }
     return orElse();
   }
@@ -257,29 +257,29 @@ class _$FetchAllNotificationAdminEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(FetchAllNotificationAdminEvent value)
-        getAllNotificion,
+        getAllNotification,
   }) {
-    return getAllNotificion(this);
+    return getAllNotification(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllNotificationAdminEvent value)? getAllNotificion,
+    TResult? Function(FetchAllNotificationAdminEvent value)? getAllNotification,
   }) {
-    return getAllNotificion?.call(this);
+    return getAllNotification?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(FetchAllNotificationAdminEvent value)? getAllNotificion,
+    TResult Function(FetchAllNotificationAdminEvent value)? getAllNotification,
     required TResult orElse(),
   }) {
-    if (getAllNotificion != null) {
-      return getAllNotificion(this);
+    if (getAllNotification != null) {
+      return getAllNotification(this);
     }
     return orElse();
   }
