@@ -12,6 +12,7 @@ class AddNotificationBloc
     extends Bloc<AddNotificationEvent, AddNotificationState> {
   AddNotificationBloc() : super(const AddNotificationState.initial()) {
     on<CreateNotificationEvent>(_createNotification);
+    on<DeleteNotificationEvent>(_deleteNotification);
   }
 
   FutureOr<void> _createNotification(
@@ -21,6 +22,19 @@ class AddNotificationBloc
     emit(const AddNotificationState.loading());
     try {
       await HiveDatabase().notificationBox!.add(event.notificationModel);
+      emit(const AddNotificationState.success());
+    } catch (e) {
+      emit(AddNotificationState.error(error: e.toString()));
+    }
+  }
+
+  FutureOr<void> _deleteNotification(
+    DeleteNotificationEvent event,
+    Emitter<AddNotificationState> emit,
+  )async {
+    emit(const AddNotificationState.loading());
+    try {
+      await event.notificationModel.delete();
       emit(const AddNotificationState.success());
     } catch (e) {
       emit(AddNotificationState.error(error: e.toString()));
