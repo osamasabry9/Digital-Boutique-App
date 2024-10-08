@@ -4,7 +4,7 @@ import 'package:digital_boutique/core/style/colors/colors_dark.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../core/common/widgets/custom_text_field.dart';
+import 'package:digital_boutique/core/common/widgets/custom_text_field.dart';
 
 class CreateNotificationBottomSheet extends StatefulWidget {
   const CreateNotificationBottomSheet({super.key});

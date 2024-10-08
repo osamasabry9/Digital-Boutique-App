@@ -2,7 +2,7 @@ import 'package:digital_boutique/features/admin/add_notifications/presentation/w
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'create/create_notification.dart';
+import 'package:digital_boutique/features/admin/add_notifications/presentation/widgets/create/create_notification.dart';
 
 class AddNotificationBody extends StatelessWidget {
   const AddNotificationBody({super.key});

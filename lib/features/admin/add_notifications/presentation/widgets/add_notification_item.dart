@@ -88,7 +88,7 @@ class NotificationInfo extends StatelessWidget {
                     color: ColorsDark.blueLight,
                     fontFamily: FontFamilyHelper.poppinsEnglish,
                     fontWeight: FontWeightHelper.medium,
-                  )),
+                  ),),
         ),
       ],
     );
