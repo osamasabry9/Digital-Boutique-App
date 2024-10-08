@@ -1,9 +1,12 @@
+import 'package:digital_boutique/app/di.dart';
 import 'package:digital_boutique/core/common/bottom_shet/custom_bottom_sheet.dart';
 import 'package:digital_boutique/core/common/widgets/custom_button.dart';
 import 'package:digital_boutique/core/common/widgets/text_app.dart';
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
+import 'package:digital_boutique/features/admin/add_notifications/presentation/bloc/add_notification/add_notification_bloc.dart';
 import 'package:digital_boutique/features/admin/add_notifications/presentation/widgets/create/create_notification_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateNotification extends StatelessWidget {
@@ -22,7 +25,10 @@ class CreateNotification extends StatelessWidget {
           onPressed: () {
             CustomBottomSheet.showModalBottomSheetContainer(
               context: context,
-              widget: const CreateNotificationBottomSheet(),
+              widget: BlocProvider(
+                create: (context) => getIt<AddNotificationBloc>(),
+                child: const CreateNotificationBottomSheet(),
+              ),
             );
           },
           backgroundColor: ColorsDark.blueDark,
