@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:digital_boutique/core/service/hive/hive_database.dart';
 import 'package:digital_boutique/features/admin/add_notifications/data/models/add_notification_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -6,10 +8,22 @@ part 'add_notification_event.dart';
 part 'add_notification_state.dart';
 part 'add_notification_bloc.freezed.dart';
 
-class AddNotificationBloc extends Bloc<AddNotificationEvent, AddNotificationState> {
+class AddNotificationBloc
+    extends Bloc<AddNotificationEvent, AddNotificationState> {
   AddNotificationBloc() : super(const AddNotificationState.initial()) {
-    on<AddNotificationEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<CreateNotificationEvent>(_createNotification);
+  }
+
+  FutureOr<void> _createNotification(
+    CreateNotificationEvent event,
+    Emitter<AddNotificationState> emit,
+  )async {
+    emit(const AddNotificationState.loading());
+    try {
+      await HiveDatabase().notificationBox!.add(event.notificationModel);
+      emit(const AddNotificationState.success());
+    } catch (e) {
+      emit(AddNotificationState.error(error: e.toString()));
+    }
   }
 }

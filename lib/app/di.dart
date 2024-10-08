@@ -10,6 +10,7 @@ import 'package:digital_boutique/features/admin/add_categories/presentation/bloc
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
+import 'package:digital_boutique/features/admin/add_notifications/presentation/bloc/add_notification/add_notification_bloc.dart';
 import 'package:digital_boutique/features/admin/add_products/data/data_source/products_admin_data_source.dart';
 import 'package:digital_boutique/features/admin/add_products/data/repos/products_admin_repo.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/bloc/create_product/create_product_bloc.dart';
@@ -40,6 +41,7 @@ Future<void> setupGetIt() async {
   await _initCategoriesAdmin();
   await _initProductsAdmin();
   await _initUsersAdmin();
+  await _initNotification();
 }
 
 /// Initializes the core functionality by creating an instance of Dio using DioFactory,
@@ -133,4 +135,10 @@ Future<void> _initUsersAdmin() async {
     ..registerLazySingleton(
       () => UserDataSource(getIt<ApiService>()),
     );
+}
+
+Future<void> _initNotification() async {
+  getIt.registerFactory(
+    AddNotificationBloc.new,
+  );
 }
