@@ -3,6 +3,7 @@ import 'package:digital_boutique/core/common/widgets/text_app.dart';
 import 'package:digital_boutique/core/style/colors/colors_dark.dart';
 import 'package:digital_boutique/core/style/fonts/font_family_helper.dart';
 import 'package:digital_boutique/core/style/fonts/font_weight_helper.dart';
+import 'package:digital_boutique/features/admin/add_notifications/data/models/add_notification_model.dart';
 import 'package:digital_boutique/features/admin/add_notifications/presentation/widgets/delete/delete_notification.dart';
 import 'package:digital_boutique/features/admin/add_notifications/presentation/widgets/edit/edit_notification.dart';
 import 'package:digital_boutique/features/admin/add_notifications/presentation/widgets/send/send_notification.dart';
@@ -10,7 +11,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddNotificationItem extends StatelessWidget {
-  const AddNotificationItem({super.key});
+  const AddNotificationItem(
+      {required this.notification, required this.index, super.key});
+
+  final AddNotificationModel notification;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -23,28 +28,29 @@ class AddNotificationItem extends StatelessWidget {
           children: [
             const Spacer(),
             //Title
-            const NotificationInfo(
+            NotificationInfo(
               title: 'Title: ',
-              body: ' title',
+              body: notification.title,
             ),
             const Spacer(),
             //Body
-            const NotificationInfo(
+            NotificationInfo(
               title: 'Body: ',
-              body: ' body',
+              body: notification.body,
             ),
             const Spacer(),
-            const NotificationInfo(
+            //Create At
+            NotificationInfo(
               title: 'Create At: ',
-              body: ' create at',
+              body: notification.createAt.toLocal().toString().substring(0, 16),
             ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const DeleteNotification(),
+                 DeleteNotification(notificationModel: notification,),
                 SizedBox(width: 40.w),
-                const EditNotification(),
+                 EditNotification(notificationModel: notification,),
                 SizedBox(width: 40.w),
                 const SendNotification(),
               ],
@@ -82,13 +88,14 @@ class NotificationInfo extends StatelessWidget {
         SizedBox(height: 8.w),
         Flexible(
           child: TextApp(
-              text: body,
-              theme: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 14.sp,
-                    color: ColorsDark.blueLight,
-                    fontFamily: FontFamilyHelper.poppinsEnglish,
-                    fontWeight: FontWeightHelper.medium,
-                  ),),
+            text: body,
+            theme: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontSize: 14.sp,
+                  color: ColorsDark.blueLight,
+                  fontFamily: FontFamilyHelper.poppinsEnglish,
+                  fontWeight: FontWeightHelper.medium,
+                ),
+          ),
         ),
       ],
     );
