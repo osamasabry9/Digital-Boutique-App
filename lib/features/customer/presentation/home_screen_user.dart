@@ -2,7 +2,7 @@ import 'package:digital_boutique/core/service/push_notification/notification_hel
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/helpers/app_logout.dart';
+import 'package:digital_boutique/core/utils/helpers/app_logout.dart';
 
 class HomeScreenUser extends StatelessWidget {
   const HomeScreenUser({super.key});
