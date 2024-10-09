@@ -10,8 +10,11 @@ import 'package:digital_boutique/features/admin/add_categories/presentation/bloc
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
+import 'package:digital_boutique/features/admin/add_notifications/data/data_source/add_notificaion_data_source.dart';
+import 'package:digital_boutique/features/admin/add_notifications/data/repos/add_notification_repo.dart';
 import 'package:digital_boutique/features/admin/add_notifications/presentation/bloc/add_notification/add_notification_bloc.dart';
 import 'package:digital_boutique/features/admin/add_notifications/presentation/bloc/get_all_notification_admin/get_all_notification_admin_bloc.dart';
+import 'package:digital_boutique/features/admin/add_notifications/presentation/bloc/send_notification/send_notification_bloc.dart';
 import 'package:digital_boutique/features/admin/add_products/data/data_source/products_admin_data_source.dart';
 import 'package:digital_boutique/features/admin/add_products/data/repos/products_admin_repo.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/bloc/create_product/create_product_bloc.dart';
@@ -145,5 +148,12 @@ Future<void> _initNotification() async {
     )
     ..registerFactory(
       GetAllNotificationAdminBloc.new,
-    );
+    )
+    ..registerLazySingleton(AddNotificationDataSource.new)
+    ..registerLazySingleton(
+      () => AddNotificationRepo(
+        addNotificationDataSource: getIt<AddNotificationDataSource>(),
+      ),
+    )
+    ..registerFactory(() => SendNotificationBloc(getIt<AddNotificationRepo>()));
 }
