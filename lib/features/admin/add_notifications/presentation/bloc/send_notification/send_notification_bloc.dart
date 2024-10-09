@@ -28,7 +28,7 @@ class SendNotificationBloc
 
     result.when(
       success: (_) {
-        emit(SendNotificationState.success(indexId: event.indexId));
+        emit(const SendNotificationState.success());
       },
       failure: (error) {
         emit(SendNotificationState.error(error: error));

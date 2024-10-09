@@ -48,11 +48,14 @@ class AddNotificationItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                 DeleteNotification(notificationModel: notification,),
+                DeleteNotification(notificationModel: notification),
                 SizedBox(width: 40.w),
-                 EditNotification(notificationModel: notification,),
+                EditNotification(notificationModel: notification),
                 SizedBox(width: 40.w),
-                const SendNotification(),
+                SendNotification(
+                  notificationModel: notification,
+                  indexId: index,
+                ),
               ],
             ),
           ],

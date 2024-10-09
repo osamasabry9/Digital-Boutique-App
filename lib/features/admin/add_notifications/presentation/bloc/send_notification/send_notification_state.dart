@@ -6,7 +6,7 @@ class SendNotificationState with _$SendNotificationState {
 
   const factory SendNotificationState.loading({required int indexId}) = LoadingState;
 
-  const factory SendNotificationState.success({required int indexId}) = SuccessState;
+  const factory SendNotificationState.success() = SuccessState;
 
   const factory SendNotificationState.error({required String error}) = ErrorState;
 }

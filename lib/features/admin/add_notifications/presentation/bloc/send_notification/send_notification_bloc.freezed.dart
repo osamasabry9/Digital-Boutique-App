@@ -368,7 +368,7 @@ mixin _$SendNotificationState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int indexId) loading,
-    required TResult Function(int indexId) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -376,7 +376,7 @@ mixin _$SendNotificationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int indexId)? loading,
-    TResult? Function(int indexId)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -384,7 +384,7 @@ mixin _$SendNotificationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int indexId)? loading,
-    TResult Function(int indexId)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -475,7 +475,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int indexId) loading,
-    required TResult Function(int indexId) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -486,7 +486,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int indexId)? loading,
-    TResult? Function(int indexId)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -497,7 +497,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int indexId)? loading,
-    TResult Function(int indexId)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -615,7 +615,7 @@ class _$LoadingStateImpl implements LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int indexId) loading,
-    required TResult Function(int indexId) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return loading(indexId);
@@ -626,7 +626,7 @@ class _$LoadingStateImpl implements LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int indexId)? loading,
-    TResult? Function(int indexId)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) {
     return loading?.call(indexId);
@@ -637,7 +637,7 @@ class _$LoadingStateImpl implements LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int indexId)? loading,
-    TResult Function(int indexId)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -699,8 +699,6 @@ abstract class _$$SuccessStateImplCopyWith<$Res> {
   factory _$$SuccessStateImplCopyWith(
           _$SuccessStateImpl value, $Res Function(_$SuccessStateImpl) then) =
       __$$SuccessStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int indexId});
 }
 
 /// @nodoc
@@ -710,60 +708,36 @@ class __$$SuccessStateImplCopyWithImpl<$Res>
   __$$SuccessStateImplCopyWithImpl(
       _$SuccessStateImpl _value, $Res Function(_$SuccessStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? indexId = null,
-  }) {
-    return _then(_$SuccessStateImpl(
-      indexId: null == indexId
-          ? _value.indexId
-          : indexId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$SuccessStateImpl implements SuccessState {
-  const _$SuccessStateImpl({required this.indexId});
-
-  @override
-  final int indexId;
+  const _$SuccessStateImpl();
 
   @override
   String toString() {
-    return 'SendNotificationState.success(indexId: $indexId)';
+    return 'SendNotificationState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessStateImpl &&
-            (identical(other.indexId, indexId) || other.indexId == indexId));
+        (other.runtimeType == runtimeType && other is _$SuccessStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, indexId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
-      __$$SuccessStateImplCopyWithImpl<_$SuccessStateImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int indexId) loading,
-    required TResult Function(int indexId) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
-    return success(indexId);
+    return success();
   }
 
   @override
@@ -771,10 +745,10 @@ class _$SuccessStateImpl implements SuccessState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int indexId)? loading,
-    TResult? Function(int indexId)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) {
-    return success?.call(indexId);
+    return success?.call();
   }
 
   @override
@@ -782,12 +756,12 @@ class _$SuccessStateImpl implements SuccessState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int indexId)? loading,
-    TResult Function(int indexId)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(indexId);
+      return success();
     }
     return orElse();
   }
@@ -831,12 +805,7 @@ class _$SuccessStateImpl implements SuccessState {
 }
 
 abstract class SuccessState implements SendNotificationState {
-  const factory SuccessState({required final int indexId}) = _$SuccessStateImpl;
-
-  int get indexId;
-  @JsonKey(ignore: true)
-  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory SuccessState() = _$SuccessStateImpl;
 }
 
 /// @nodoc
@@ -905,7 +874,7 @@ class _$ErrorStateImpl implements ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int indexId) loading,
-    required TResult Function(int indexId) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -916,7 +885,7 @@ class _$ErrorStateImpl implements ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int indexId)? loading,
-    TResult? Function(int indexId)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -927,7 +896,7 @@ class _$ErrorStateImpl implements ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int indexId)? loading,
-    TResult Function(int indexId)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
