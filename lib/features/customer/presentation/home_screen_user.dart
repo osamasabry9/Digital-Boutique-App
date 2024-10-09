@@ -1,8 +1,6 @@
-import 'package:digital_boutique/core/service/push_notification/notification_help.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:digital_boutique/core/service/push_notification/firebase_cloud_messaging.dart';
 import 'package:flutter/material.dart';
 
-import 'package:digital_boutique/core/utils/helpers/app_logout.dart';
 
 class HomeScreenUser extends StatelessWidget {
   const HomeScreenUser({super.key});
@@ -12,28 +10,35 @@ class HomeScreenUser extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Customer')),
       body: Center(
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () {
-                AppLogout().logout();
-              },
-              child: const Text('Logout'),
-            ),
-            TextButton(
-              onPressed: () {
-                NotificationHelp().getAccessToken();
-              },
-              child: const Text('Get Token'),
-            ),
-            TextButton(
-              onPressed: () async {
-                final token = await FirebaseMessaging.instance.getToken();
-                print('Token customer: $token');
-              },
-              child: const Text('Get Firebase Token'),
-            ),
-          ],
+        child: ValueListenableBuilder(
+          valueListenable: NotificationCloudHelper().isNotificationSubscribe,
+          builder: (_, value, __) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  value ? 'Subscribe' : 'Unsubscribe',
+                  style: const TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Transform.scale(
+                  scale: 1.4,
+                  child: Switch.adaptive(
+                    value: value,
+                    inactiveTrackColor: const Color(0xff262626),
+                    activeColor: Colors.green,
+                    onChanged: (value) async {
+                      await NotificationCloudHelper()
+                          .controllerForUserSubscribe(context);
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
