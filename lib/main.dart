@@ -6,6 +6,8 @@ import 'package:digital_boutique/core/extensions/context_extension.dart';
 import 'package:digital_boutique/core/local_storage/secure_storage/secure_storage_helper.dart';
 import 'package:digital_boutique/core/local_storage/shared_pref/pref_keys.dart';
 import 'package:digital_boutique/core/local_storage/shared_pref/shared_pref.dart';
+import 'package:digital_boutique/core/service/hive/hive_database.dart';
+import 'package:digital_boutique/core/service/push_notification/firebase_cloud_messaging.dart';
 import 'package:digital_boutique/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,12 @@ void main() async {
 // to initialize get it in the main function
   await setupGetIt();
 
+// to initialize notification in the main function and check permission for notification
+  await NotificationCloudHelper().init();
+
+// to initialize hive in the main function
+  await HiveDatabase().setup();
+
 // to initialize bloc observer to show the state changes in the app
   Bloc.observer = AppBlocObserver();
 
@@ -47,7 +55,7 @@ void main() async {
 
 /// To check if user is logged in or not.
 Future<void> checkIfLoggedInUser() async {
-  String? userToken =
+  final userToken =
       await SecureStorageHelper.getSecuredString(PrefKeys.accessToken);
   if (!userToken.isNullOrEmpty()) {
     checkAdmin();
@@ -58,7 +66,7 @@ Future<void> checkIfLoggedInUser() async {
 }
 
 void checkAdmin() {
-  String? userRole = SharedPref().getString(PrefKeys.userRole);
+  final userRole = SharedPref().getString(PrefKeys.userRole);
   if (userRole == 'admin') {
     isAdmin = true;
   } else {

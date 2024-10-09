@@ -87,7 +87,7 @@ final ProductGetAllModel product;
                 description:
                     _descriptionController.text.trim(),
                 price: double.parse(
-                    _priceController.text.trim()),
+                    _priceController.text.trim(),),
                 imageList: context
                         .read<UploadImageCubit>()
                         .imageUpdateList

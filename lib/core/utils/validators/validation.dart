@@ -30,12 +30,12 @@ class AppValidators {
     }
 
     // Check for uppercase letters
-    if (!value.contains(RegExp(r'[A-Z]'))) {
+    if (!value.contains(RegExp('[A-Z]'))) {
       return context.translate(LangKeys.validPasswordUppercase);
     }
 
     // Check for numbers
-    if (!value.contains(RegExp(r'[0-9]'))) {
+    if (!value.contains(RegExp('[0-9]'))) {
       return context.translate(LangKeys.validPasswordNumber);
     }
 

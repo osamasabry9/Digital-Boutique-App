@@ -25,7 +25,7 @@ class CategoriesAdminDataSource {
 
   Future<void> deleteCategory({required String categoryId}) async {
     await _graphql.deleteCategory(
-        CategoriesQueries().deleteMapQuery(categoryId: categoryId));
+        CategoriesQueries().deleteMapQuery(categoryId: categoryId),);
   }
 
   Future<void> updateCategory({required UpdateCategoryRequestBody body}) async {

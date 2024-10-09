@@ -7,11 +7,10 @@ import 'package:digital_boutique/core/style/colors/colors_dark.dart';
 import 'package:digital_boutique/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/bloc/create_product/create_product_bloc.dart';
 import 'package:digital_boutique/features/admin/add_products/presentation/bloc/get_all_admin_products/get_all_admin_products_bloc.dart';
+import 'package:digital_boutique/features/admin/add_products/presentation/widgets/create/create_product_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'create_product_bottom_sheet.dart';
 
 class CreateProduct extends StatelessWidget {
   const CreateProduct({

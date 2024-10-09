@@ -3,10 +3,10 @@ import 'package:digital_boutique/app/env.variables.dart';
 import 'package:digital_boutique/core/common/screens/no_network_screen.dart';
 import 'package:digital_boutique/core/cubits/app_cubit/app_cubit.dart';
 import 'package:digital_boutique/core/language/app_localizations_setup.dart';
-import 'package:digital_boutique/core/routes/app_router.dart';
-import 'package:digital_boutique/core/routes/routes.dart';
 import 'package:digital_boutique/core/local_storage/shared_pref/pref_keys.dart';
 import 'package:digital_boutique/core/local_storage/shared_pref/shared_pref.dart';
+import 'package:digital_boutique/core/routes/app_router.dart';
+import 'package:digital_boutique/core/routes/routes.dart';
 import 'package:digital_boutique/core/style/theme/app_theme.dart';
 import 'package:digital_boutique/core/utils/helpers/connectivity_controller.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +78,6 @@ class DigitalBoutiqueApp extends StatelessWidget {
           return MaterialApp(
             title: 'No Network ',
             debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-            themeMode: ThemeMode.system,
             darkTheme: themeDark(),
             theme: themeLight(),
             home: const NoNetworkScreen(),

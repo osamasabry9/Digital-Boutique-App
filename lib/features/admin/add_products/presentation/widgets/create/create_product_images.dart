@@ -96,7 +96,7 @@ class SleetedYourProductImage extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: NetworkImage(
-                    context.read<UploadImageCubit>().imageList[index]),
+                    context.read<UploadImageCubit>().imageList[index],),
               ),
             ),
           )

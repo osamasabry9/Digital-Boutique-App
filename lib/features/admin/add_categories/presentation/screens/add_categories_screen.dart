@@ -18,7 +18,7 @@ class AddCategoriesScreen extends StatelessWidget {
           create: (context) => getIt<GetAllAdminCategoriesBloc>()
             ..add(
               const GetAllAdminCategoriesEvent.fetchAdminCategories(
-                  isNotLoading: true),
+                  isNotLoading: true,),
             ),
         ),
         BlocProvider(create: (context) => getIt<DeleteCategoryBloc>()),
