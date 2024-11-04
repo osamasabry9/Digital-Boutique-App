@@ -67,7 +67,7 @@ class DigitalBoutiqueApp extends StatelessWidget {
                     initialRoute: isLoggedInUser
                         ? isAdmin
                             ? Routes.homeAdminScreen
-                            : Routes.homeScreenUser
+                            : Routes.mainScreen
                         : Routes.loginScreen,
                   );
                 },

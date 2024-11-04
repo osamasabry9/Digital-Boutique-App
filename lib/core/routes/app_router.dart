@@ -8,7 +8,8 @@ import 'package:digital_boutique/features/admin/home_admin/presentation/screens/
 import 'package:digital_boutique/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:digital_boutique/features/auth/presentation/screens/login_screen.dart';
 import 'package:digital_boutique/features/auth/presentation/screens/sign_uo_screen.dart';
-import 'package:digital_boutique/features/customer/presentation/home_screen_user.dart';
+import 'package:digital_boutique/features/customer/main/presentation/screen/main_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,8 +38,8 @@ class AppRouter {
         );
       case Routes.homeAdminScreen:
         return BaseRouteAnimation(page: const HomeAdminScreen());
-      case Routes.homeScreenUser:
-        return BaseRouteAnimation(page: const HomeScreenUser());
+      case Routes.mainScreen:
+        return BaseRouteAnimation(page: const MainScreen());
       default:
         return BaseRouteAnimation(page: const PageUnderBuildScreen());
     }

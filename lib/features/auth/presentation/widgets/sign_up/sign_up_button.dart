@@ -25,7 +25,7 @@ class SignUpButton extends StatelessWidget {
             ShowToast.showToastSuccessTop(
               message: context.translate(LangKeys.loggedSuccessfully),
             );
-            context.pushNamedAndRemoveUntil(Routes.homeScreenUser);
+            context.pushNamedAndRemoveUntil(Routes.mainScreen);
           },
           error: (message) {
             ShowToast.showToastErrorTop(message: context.translate(message));
