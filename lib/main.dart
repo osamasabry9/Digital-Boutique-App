@@ -52,7 +52,6 @@ void main() async {
     runApp(const DigitalBoutiqueApp());
   });
 }
-
 /// To check if user is logged in or not.
 Future<void> checkIfLoggedInUser() async {
   final userToken =

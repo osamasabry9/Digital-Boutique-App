@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddNotificationItem extends StatelessWidget {
   const AddNotificationItem(
-      {required this.notification, required this.index, super.key});
+      {required this.notification, required this.index, super.key,});
 
   final AddNotificationModel notification;
   final int index;

@@ -27,7 +27,7 @@ class LoginButton extends StatelessWidget {
             if (userRole == 'admin') {
               context.pushNamedAndRemoveUntil(Routes.homeAdminScreen);
             } else {
-              context.pushNamedAndRemoveUntil(Routes.homeScreenUser);
+              context.pushNamedAndRemoveUntil(Routes.mainScreen);
             }
           },
           error: (message) {
