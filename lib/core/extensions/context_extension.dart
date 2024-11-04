@@ -1,5 +1,5 @@
 import 'package:digital_boutique/core/language/app_localizations.dart';
-import 'package:digital_boutique/core/style/images/app_images.dart';
+import 'package:digital_boutique/core/style/theme/assets_extension.dart';
 import 'package:digital_boutique/core/style/theme/color_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ extension ContextExtension on BuildContext {
   AppColors get color => Theme.of(this).extension<AppColors>()!;
 
   // images
-  AppImages get assets => Theme.of(this).extension<AppImages>()!;
+  MyAssets get assets => Theme.of(this).extension<MyAssets>()!;
 
   // style
   TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
