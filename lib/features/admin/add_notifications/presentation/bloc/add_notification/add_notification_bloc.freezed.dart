@@ -85,6 +85,9 @@ class _$AddNotificationEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -221,6 +227,8 @@ class __$$CreateNotificationEventImplCopyWithImpl<$Res>
       $Res Function(_$CreateNotificationEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -260,7 +268,9 @@ class _$CreateNotificationEventImpl implements CreateNotificationEvent {
   @override
   int get hashCode => Object.hash(runtimeType, notificationModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateNotificationEventImplCopyWith<_$CreateNotificationEventImpl>
@@ -348,7 +358,10 @@ abstract class CreateNotificationEvent implements AddNotificationEvent {
       _$CreateNotificationEventImpl;
 
   AddNotificationModel get notificationModel;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateNotificationEventImplCopyWith<_$CreateNotificationEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -373,6 +386,8 @@ class __$$DeleteNotificationEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteNotificationEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -412,7 +427,9 @@ class _$DeleteNotificationEventImpl implements DeleteNotificationEvent {
   @override
   int get hashCode => Object.hash(runtimeType, notificationModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteNotificationEventImplCopyWith<_$DeleteNotificationEventImpl>
@@ -500,7 +517,10 @@ abstract class DeleteNotificationEvent implements AddNotificationEvent {
       _$DeleteNotificationEventImpl;
 
   AddNotificationModel get notificationModel;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddNotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteNotificationEventImplCopyWith<_$DeleteNotificationEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -576,6 +596,9 @@ class _$AddNotificationStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AddNotificationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -592,6 +615,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AddNotificationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -706,6 +732,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AddNotificationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -820,6 +849,9 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AddNotificationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -937,6 +969,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddNotificationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -975,7 +1009,9 @@ class _$ErrorImpl implements Error {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddNotificationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -1060,7 +1096,10 @@ abstract class Error implements AddNotificationState {
   const factory Error({required final String error}) = _$ErrorImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddNotificationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
