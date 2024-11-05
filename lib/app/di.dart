@@ -33,6 +33,7 @@ import 'package:digital_boutique/features/admin/users/presentation/bloc/get_all_
 import 'package:digital_boutique/features/auth/data/data_source/auth_data_source.dart';
 import 'package:digital_boutique/features/auth/data/reposatory/auth_repos.dart';
 import 'package:digital_boutique/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:digital_boutique/features/customer/main/presentation/cubit/main_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -46,6 +47,7 @@ Future<void> setupGetIt() async {
   await _initProductsAdmin();
   await _initUsersAdmin();
   await _initNotification();
+  await _initMain();
 }
 
 /// Initializes the core functionality by creating an instance of Dio using DioFactory,
@@ -156,4 +158,10 @@ Future<void> _initNotification() async {
       ),
     )
     ..registerFactory(() => SendNotificationBloc(getIt<AddNotificationRepo>()));
+}
+
+Future<void> _initMain() async {
+  getIt.registerFactory(
+    MainCubit.new,
+  );
 }
